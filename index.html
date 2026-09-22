@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Нулевой люфт: автосервис</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #E4E7EA;
+  --panel: #FFFFFF;
+  --ink: #17212B;
+  --steel: #4E5D6B;
+  --line: #B9C1C9;
+  --accent: #1E4BD8;
+  --accent-text: #1E4BD8;
+  --on-accent: #FFFFFF;
+  --hazard: #FFC61A;
+  --stripe-dark: #17212B;
+  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --font-body: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12181F;
+    --panel: #1B242D;
+    --ink: #E8ECEF;
+    --steel: #9AA8B5;
+    --line: #34424F;
+    --accent: #3D68F0;
+    --accent-text: #8CA6FF;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12181F;
+  --panel: #1B242D;
+  --ink: #E8ECEF;
+  --steel: #9AA8B5;
+  --line: #34424F;
+  --accent: #3D68F0;
+  --accent-text: #8CA6FF;
+}
+
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3 { margin: 0; font-weight: 600; }
+h1, h2 { font-family: var(--font-display); letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 2px; }
+
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
+.brand { display: flex; flex-direction: column; line-height: 1.15; text-decoration: none; }
+.brand b { font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; }
+.brand span { font-size: 0.82rem; color: var(--steel); }
+.bar-right { display: flex; align-items: center; gap: 18px; }
+.phone { font-weight: 500; text-decoration: none; display: none; }
+@media (min-width: 640px) { .phone { display: inline; } }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 12px 22px;
+  background: var(--accent); color: var(--on-accent);
+  border: 0; border-radius: 6px;
+  font-weight: 600; text-decoration: none; cursor: pointer;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn.small { min-height: 42px; padding: 8px 16px; }
+.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+
+/* Hero */
+.hero { padding-top: 40px; padding-bottom: 8px; }
+.hero-grid { display: grid; gap: 28px; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; } }
+h1 { font-size: clamp(2rem, 7.4vw, 3.4rem); line-height: 1.08; }
+.lead { margin-top: 16px; max-width: 34em; color: var(--steel); font-size: 1.06rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.chip {
+  min-height: 44px; padding: 8px 16px;
+  background: transparent; border: 1.5px solid var(--ink); border-radius: 999px;
+  cursor: pointer; font-weight: 500;
+}
+.chip:hover { background: var(--panel); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+.panel { background: var(--panel); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.stripe { height: 10px; background: repeating-linear-gradient(-45deg, var(--hazard) 0 10px, var(--stripe-dark) 10px 20px); }
+.panel-body { padding: 22px 20px 24px; }
+.panel h2 { font-size: 1.25rem; line-height: 1.25; font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+.panel dl { margin: 16px 0 0; display: grid; gap: 14px; }
+.panel dt { font-size: 0.86rem; color: var(--steel); }
+.panel dd { margin: 2px 0 0; }
+.price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+.price { font-family: var(--font-display); font-weight: 600; font-size: 1.9rem; line-height: 1.1; }
+.price-note { color: var(--steel); font-size: 0.9rem; }
+.panel .btn { margin-top: 20px; width: 100%; }
+@media (min-width: 480px) { .panel .btn { width: auto; } }
+@media (prefers-reduced-motion: no-preference) {
+  .swap { animation: swap 0.22s ease-out; }
+  @keyframes swap { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
+
+.facts { display: grid; margin-top: 40px; border-top: 1.5px solid var(--ink); }
+.facts div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.facts b { display: block; font-weight: 600; }
+.facts span { color: var(--steel); font-size: 0.95rem; }
+@media (min-width: 720px) {
+  .facts { grid-template-columns: repeat(3, 1fr); }
+  .facts div { padding: 18px 24px 18px 0; border-bottom: 0; }
+  .facts div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+}
+
+/* Sections */
+section { padding: 64px 0 8px; }
+h2.section-title { font-size: clamp(1.5rem, 4.6vw, 2.2rem); line-height: 1.15; }
+.section-lead { margin-top: 12px; max-width: 36em; color: var(--steel); }
+
+/* Price list */
+.prices { display: grid; gap: 32px; margin-top: 28px; }
+@media (min-width: 900px) { .prices { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+.prices h3 { font-size: 1.05rem; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+.prices ul { list-style: none; margin: 0; padding: 0; }
+.prices li { display: flex; align-items: baseline; gap: 8px; padding: 11px 0; }
+.prices .name { flex: 0 1 auto; }
+.prices .dots { flex: 1 1 14px; min-width: 14px; border-bottom: 2px dotted var(--line); transform: translateY(-4px); }
+.prices .sum { flex: none; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.prices .sum small { font-weight: 400; color: var(--steel); font-size: 0.85em; }
+.note { margin-top: 24px; color: var(--steel); font-size: 0.95rem; max-width: 40em; }
+
+/* Process */
+.steps { list-style: none; margin: 28px 0 0; padding: 0; max-width: 40rem; }
+.steps li { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 16px; padding-bottom: 26px; }
+.steps li:last-child { padding-bottom: 0; }
+.steps li::before {
+  content: ""; position: absolute; left: 19px; top: 40px; bottom: 0; width: 2px; background: var(--line);
+}
+.steps li:last-child::before { display: none; }
+.step-n {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--accent); color: var(--on-accent);
+  display: grid; place-items: center; font-weight: 600;
+}
+.steps b { display: block; font-weight: 600; padding-top: 6px; }
+.steps span { color: var(--steel); }
+
+/* Booking */
+.book-grid { display: grid; gap: 32px; margin-top: 28px; }
+@media (min-width: 900px) { .book-grid { grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: start; } }
+.book-side p + p { margin-top: 14px; }
+.tg { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.tg[hidden] { display: none; }
+.tg p { color: var(--steel); margin-bottom: 14px; }
+.form { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 22px 20px 24px; display: grid; gap: 16px; }
+@media (min-width: 560px) { .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } }
+.row2 > div + div { margin-top: 16px; }
+@media (min-width: 560px) { .row2 > div + div { margin-top: 0; } }
+label { display: block; font-weight: 500; font-size: 0.95rem; margin-bottom: 6px; }
+input, select {
+  width: 100%; min-height: 48px; padding: 10px 12px;
+  font-size: 16px;
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: 4px;
+}
+input:focus, select:focus { border-color: var(--accent-text); }
+.form .btn { width: 100%; }
+.done { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.done[hidden], .form[hidden] { display: none; }
+.done .panel-body h2 { font-size: 1.25rem; }
+.done p { margin-top: 10px; }
+.done .sum { margin-top: 16px; padding: 14px 16px; background: var(--bg); border-radius: 4px; display: grid; gap: 4px; }
+.done .btn { margin-top: 20px; }
+.tiny { font-size: 0.85rem; color: var(--steel); }
+
+footer { margin-top: 72px; border-top: 1.5px solid var(--ink); padding: 28px 0 40px; }
+.foot { display: grid; gap: 18px; }
+@media (min-width: 720px) { .foot { grid-template-columns: repeat(3, 1fr); } }
+.foot b { display: block; font-weight: 600; }
+.foot span, .foot a { color: var(--steel); text-decoration: none; }
+.foot-note { margin-top: 24px; font-size: 0.85rem; color: var(--steel); }
+
+/* Intro: ключ затягивает гайку, люфт падает до нуля */
+.intro {
+  position: fixed; inset: 0; z-index: 100;
+  background: #17212B; color: #FFFFFF;
+  display: grid; place-items: center;
+  padding: env(safe-area-inset-top, 0px) 20px env(safe-area-inset-bottom, 0px);
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.intro.leave { transform: translateY(-100%); }
+.intro-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.intro svg { width: min(96vw, 430px); height: auto; display: block; }
+.intro-read { margin-top: 4px; font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; color: #9AA8B5; font-variant-numeric: tabular-nums; }
+.intro-read b { font-weight: 600; color: #FFFFFF; display: inline-block; min-width: 2.4ch; }
+.intro-read.zero b { color: #FFC61A; }
+.intro-brand { margin-top: 18px; opacity: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 6vw, 2rem); }
+.intro-brand small { display: block; margin-top: 4px; font-family: var(--font-body); font-weight: 400; font-size: 0.95rem; color: #9AA8B5; }
+.intro-skip { position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); text-align: center; font-size: 0.85rem; color: #9AA8B5; }
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
+</style>
+<noscript><style>.intro { display: none; }</style></noscript>
+</head>
+<body>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-inner">
+    <svg viewBox="-160 -160 320 320" xmlns="http://www.w3.org/2000/svg">
+      <circle r="62" fill="none" stroke="#2C3A48" stroke-width="1.5"/>
+      <circle id="ring" r="30" fill="none" stroke="#FFC61A" stroke-width="3" opacity="0"/>
+      <g id="nut" transform="rotate(0)">
+        <polygon points="26,0 13,22.52 -13,22.52 -26,0 -13,-22.52 13,-22.52" fill="#FFC61A" stroke="#C99A00" stroke-width="2" stroke-linejoin="round"/>
+        <circle r="11" fill="#17212B"/>
+        <line x1="11" y1="0" x2="26" y2="0" stroke="#17212B" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <g id="wrench" transform="rotate(20)">
+        <rect x="34" y="-12" width="106" height="24" rx="12" fill="#C9D2DA" stroke="#8FA0AF" stroke-width="2"/>
+        <path fill="#C9D2DA" stroke="#8FA0AF" stroke-width="2" fill-rule="evenodd" stroke-linejoin="round"
+              d="M 40 0 A 40 40 0 1 0 -40 0 A 40 40 0 1 0 40 0 Z M 30 0 L 15 25.98 L -15 25.98 L -30 0 L -15 -25.98 L 15 -25.98 Z"/>
+        <line x1="54" y1="-5" x2="126" y2="-5" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <div class="intro-read" id="reading">люфт <b id="lash">2,0</b> мм</div>
+    <div class="intro-brand" id="introBrand">Нулевой люфт<small>автосервис</small></div>
+  </div>
+  <div class="intro-skip">Нажмите, чтобы пропустить</div>
+</div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>Нулевой люфт</b><span>автосервис</span></a>
+    <div class="bar-right">
+      <a class="phone" href="tel:+77000000000">+7 (700) 000-00-00</a>
+      <a class="btn small" href="#book">Записаться</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <h1>Что случилось с машиной?</h1>
+        <p class="lead">Выберите, что вы заметили. Покажем, что проверим, сколько это займёт времени и сколько примерно стоит.</p>
+        <div class="chips" id="chips" role="group" aria-label="Что случилось с машиной"></div>
+      </div>
+      <div class="panel" aria-live="polite">
+        <div class="stripe"></div>
+        <div class="panel-body" id="result"></div>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div><b>12 месяцев гарантии</b><span>на все виды работ</span></div>
+      <div><b>Старые детали отдаём вам</b><span>и показываем, что именно заменили</span></div>
+      <div><b>Фото ремонта в мессенджере</b><span>присылаем до оплаты</span></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <h2 class="section-title">Услуги и цены</h2>
+      <p class="section-lead">Цены указаны за работу, без запчастей. Точную сумму назовём после осмотра.</p>
+      <div class="prices">
+        <div>
+          <h3>Диагностика и обслуживание</h3>
+          <ul>
+            <li><span class="name">Компьютерная диагностика</span><span class="dots"></span><span class="sum"><small>от</small> 1 200 ₽</span></li>
+            <li><span class="name">Диагностика подвески</span><span class="dots"></span><span class="sum"><small>от</small> 900 ₽</span></li>
+            <li><span class="name">Замена масла и фильтра</span><span class="dots"></span><span class="sum"><small>от</small> 900 ₽</span></li>
+            <li><span class="name">Плановое ТО</span><span class="dots"></span><span class="sum"><small>от</small> 2 500 ₽</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Тормоза и ходовая</h3>
+          <ul>
+            <li><span class="name">Колодки, одна ось</span><span class="dots"></span><span class="sum"><small>от</small> 1 200 ₽</span></li>
+            <li><span class="name">Диски, одна ось</span><span class="dots"></span><span class="sum"><small>от</small> 1 800 ₽</span></li>
+            <li><span class="name">Стойки стабилизатора</span><span class="dots"></span><span class="sum"><small>от</small> 1 000 ₽</span></li>
+            <li><span class="name">Развал-схождение</span><span class="dots"></span><span class="sum"><small>от</small> 2 200 ₽</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Двигатель и электрика</h3>
+          <ul>
+            <li><span class="name">Ремень ГРМ</span><span class="dots"></span><span class="sum"><small>от</small> 5 500 ₽</span></li>
+            <li><span class="name">Свечи зажигания</span><span class="dots"></span><span class="sum"><small>от</small> 800 ₽</span></li>
+            <li><span class="name">Замена аккумулятора</span><span class="dots"></span><span class="sum"><small>от</small> 500 ₽</span></li>
+            <li><span class="name">Заправка кондиционера</span><span class="dots"></span><span class="sum"><small>от</small> 2 200 ₽</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">Не нашли свою работу в списке? Опишите проблему при записи, посмотрим и назовём цену до начала ремонта.</p>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <h2 class="section-title">Как проходит ремонт</h2>
+      <ol class="steps">
+        <li><div class="step-n">1</div><div><b>Запись</b><span>Выберите время на сайте. Это занимает две минуты.</span></div></li>
+        <li><div class="step-n">2</div><div><b>Приёмка</b><span>Осматриваем машину при вас и записываем всё в заказ-наряд.</span></div></li>
+        <li><div class="step-n">3</div><div><b>Смета</b><span>Называем стоимость. Без вашего согласия ничего не делаем.</span></div></li>
+        <li><div class="step-n">4</div><div><b>Ремонт</b><span>Присылаем фото и видео скрытых работ в мессенджер.</span></div></li>
+        <li><div class="step-n">5</div><div><b>Выдача</b><span>Возвращаем старые детали и даём гарантию на 12 месяцев.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="wrap">
+      <h2 class="section-title">Записаться на осмотр</h2>
+      <div class="book-grid">
+        <div class="book-side">
+          <p>Оставьте заявку, и мы подтвердим время сообщением в рабочие часы.</p>
+          <p>Если не знаете, что сломалось, выберите «Не знаю, что сломалось». Осмотр без ремонта бесплатный.</p>
+          <div class="tg" id="tg" hidden>
+            <p>Быстрее в Telegram: бот отвечает на вопросы и записывает на ремонт.</p>
+            <a class="btn ghost" id="tgLink" href="#" target="_blank" rel="noopener">Открыть бота</a>
+          </div>
+        </div>
+
+        <div>
+          <form class="form" id="form">
+            <div class="row2">
+              <div><label for="name">Имя</label><input id="name" name="name" autocomplete="given-name" required></div>
+              <div><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7" required></div>
+            </div>
+            <div><label for="car">Автомобиль</label><input id="car" name="car" placeholder="Марка, модель, год" required></div>
+            <div><label for="service">Что нужно сделать</label><select id="service" name="service"></select></div>
+            <div class="row2">
+              <div><label for="date">Дата</label><input id="date" name="date" type="date" required></div>
+              <div><label for="time">Время</label><select id="time" name="time"></select></div>
+            </div>
+            <button class="btn" type="submit">Отправить заявку</button>
+          </form>
+
+          <div class="done" id="done" hidden>
+            <div class="stripe"></div>
+            <div class="panel-body">
+              <h2>Заявка принята</h2>
+              <p>Напишем на указанный номер и подтвердим время.</p>
+              <div class="sum" id="summary"></div>
+              <p class="tiny" style="margin-top:14px">Это демо-сайт: данные никуда не отправляются.</p>
+              <button class="btn ghost" type="button" id="again">Записать ещё одну машину</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><b>Адрес</b><span>ул. Гаражная, 14, бокс 3</span></div>
+      <div><b>Часы работы</b><span>Пн–Сб с 9:00 до 19:00, воскресенье выходной</span></div>
+      <div><b>Телефон</b><a href="tel:+77000000000">+7 (700) 000-00-00</a></div>
+    </div>
+    <p class="foot-note">Демо-сайт вымышленного автосервиса. Название, цены и контакты условные.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Ссылка на Telegram-бота. Пока пусто, блок с ботом скрыт.
+  var BOT_URL = "https://t.me/CTO77_bot";
+
+  var SERVICES = [
+    "Компьютерная диагностика",
+    "Диагностика подвески",
+    "Диагностика тормозов",
+    "Плановое ТО",
+    "Диагностика запуска двигателя",
+    "Диагностика шума при движении",
+    "Кондиционер: диагностика и заправка",
+    "Не знаю, что сломалось"
+  ];
+
+  var SYMPTOMS = [
+    { id: "susp", label: "Стук в подвеске", service: 1,
+      causes: "Стойки стабилизатора, шаровые опоры, опоры амортизаторов.",
+      check: "Проверяем подвеску на подъёмнике и замеряем люфты.",
+      time: "около 1 часа", price: "от 900 ₽", note: "диагностика, входит в стоимость ремонта", cta: "Записаться на диагностику" },
+    { id: "engine", label: "Горит Check Engine", service: 0,
+      causes: "Датчики, свечи и катушки, неполадки в топливной системе.",
+      check: "Считываем коды ошибок и смотрим данные двигателя в работе.",
+      time: "около 40 минут", price: "от 1 200 ₽", note: "компьютерная диагностика", cta: "Записаться на диагностику" },
+    { id: "brakes", label: "Скрипят тормоза", service: 2,
+      causes: "Изношенные колодки, задиры на дисках, залипший суппорт.",
+      check: "Снимаем колёса, замеряем колодки и диски.",
+      time: "1–2 часа", price: "от 600 ₽", note: "диагностика тормозов", cta: "Записаться на диагностику" },
+    { id: "to", label: "Пора на ТО", service: 3,
+      causes: "Плановое обслуживание по пробегу или по сроку.",
+      check: "Меняем масло и фильтры, проверяем машину по регламенту.",
+      time: "1,5–2 часа", price: "от 2 500 ₽", note: "работа, без масла и фильтров", cta: "Записаться на ТО" },
+    { id: "start", label: "Плохо заводится", service: 4,
+      causes: "Аккумулятор, стартер, свечи, топливный насос.",
+      check: "Проверяем аккумулятор под нагрузкой, стартер и подачу топлива.",
+      time: "около 40 минут", price: "от 900 ₽", note: "диагностика", cta: "Записаться на диагностику" },
+    { id: "hum", label: "Гул при движении", service: 5,
+      causes: "Подшипники ступиц, шины, редуктор.",
+      check: "Проверяем ступицы на подъёмнике и делаем пробную поездку.",
+      time: "около 1 часа", price: "от 700 ₽", note: "диагностика", cta: "Записаться на диагностику" },
+    { id: "ac", label: "Не холодит кондиционер", service: 6,
+      causes: "Не хватает фреона, утечка, неисправный компрессор.",
+      check: "Измеряем давление в системе и ищем утечки.",
+      time: "1–2 часа", price: "от 2 200 ₽", note: "заправка, диагностика входит", cta: "Записаться на диагностику" },
+    { id: "other", label: "Другое", service: 7,
+      causes: "Определим на осмотре.",
+      check: "Осматриваем машину вместе с вами и объясняем, что видим.",
+      time: "по результатам осмотра", price: "бесплатно", note: "осмотр без ремонта", cta: "Записаться на осмотр" }
+  ];
+
+  var chips = document.getElementById("chips");
+  var result = document.getElementById("result");
+  var serviceSel = document.getElementById("service");
+  var timeSel = document.getElementById("time");
+  var current = 0;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  function renderChips() {
+    chips.innerHTML = "";
+    SYMPTOMS.forEach(function (s, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.textContent = s.label;
+      b.setAttribute("aria-pressed", i === current ? "true" : "false");
+      b.addEventListener("click", function () { select(i); });
+      chips.appendChild(b);
+    });
+  }
+
+  function renderResult(animate) {
+    var s = SYMPTOMS[current];
+    result.className = "panel-body" + (animate ? " swap" : "");
+    result.innerHTML =
+      "<h2>" + esc(s.label) + "</h2>" +
+      "<dl>" +
+        "<div><dt>Что может быть</dt><dd>" + esc(s.causes) + "</dd></div>" +
+        "<div><dt>Что делаем</dt><dd>" + esc(s.check) + "</dd></div>" +
+        "<div><dt>Сколько займёт</dt><dd>" + esc(s.time) + "</dd></div>" +
+      "</dl>" +
+      '<div class="price-row"><span class="price">' + esc(s.price) + '</span><span class="price-note">' + esc(s.note) + "</span></div>" +
+      '<button class="btn" type="button" id="cta">' + esc(s.cta) + "</button>";
+    document.getElementById("cta").addEventListener("click", function () {
+      serviceSel.value = String(s.service);
+      document.getElementById("book").scrollIntoView();
+      setTimeout(function () { document.getElementById("name").focus({ preventScroll: true }); }, 350);
+    });
+  }
+
+  function select(i) {
+    current = i;
+    Array.prototype.forEach.call(chips.children, function (c, idx) {
+      c.setAttribute("aria-pressed", idx === i ? "true" : "false");
+    });
+    renderResult(true);
+  }
+
+  // Форма записи
+  SERVICES.forEach(function (name, i) {
+    var o = document.createElement("option");
+    o.value = String(i);
+    o.textContent = name;
+    serviceSel.appendChild(o);
+  });
+  for (var h = 9; h <= 18; h++) {
+    var t = document.createElement("option");
+    var label = (h < 10 ? "0" : "") + h + ":00";
+    t.value = label; t.textContent = label;
+    timeSel.appendChild(t);
+  }
+
+  var dateInput = document.getElementById("date");
+  var now = new Date();
+  var iso = now.getFullYear() + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" + ("0" + now.getDate()).slice(-2);
+  dateInput.min = iso;
+
+  var form = document.getElementById("form");
+  var done = document.getElementById("done");
+  var summary = document.getElementById("summary");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var d = dateInput.value ? dateInput.value.split("-").reverse().join(".") : "";
+    summary.innerHTML =
+      "<span><b>" + esc(document.getElementById("name").value) + "</b>, " + esc(document.getElementById("phone").value) + "</span>" +
+      "<span>" + esc(document.getElementById("car").value) + "</span>" +
+      "<span>" + esc(SERVICES[Number(serviceSel.value)]) + "</span>" +
+      "<span>" + esc(d) + " в " + esc(timeSel.value) + "</span>";
+    form.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ block: "center" });
+  });
+
+  document.getElementById("again").addEventListener("click", function () {
+    form.reset();
+    form.hidden = false;
+    done.hidden = true;
+  });
+
+  if (BOT_URL) {
+    document.getElementById("tgLink").href = BOT_URL;
+    document.getElementById("tg").hidden = false;
+  }
+
+  renderChips();
+  renderResult(false);
+})();
+</script>
+<script>
+(function () {
+  var intro = document.getElementById("intro");
+  if (!intro) return;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { intro.remove(); return; }
+
+  var root = document.documentElement;
+  root.style.overflow = "hidden";
+
+  var wrench = document.getElementById("wrench");
+  var nut = document.getElementById("nut");
+  var ring = document.getElementById("ring");
+  var lash = document.getElementById("lash");
+  var reading = document.getElementById("reading");
+  var brand = document.getElementById("introBrand");
+
+  // Тайминг в миллисекундах: три хода трещотки, щелчок, название, уход вверх
+  var START = 250, F = 280, B = 180, STEP = F + B;
+  var END = START + 2 * STEP + F;   // конец последнего хода (1450)
+  var HOLD = 2500;                   // когда начинаем уходить
+
+  var done = false;
+  var t0 = 0;
+
+  function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+  // Ключ качается вперёд на 40 градусов и возвращается, гайка идёт только вперёд
+  function state(t) {
+    if (t <= START) return { w: 20, n: 0 };
+    for (var i = 0; i < 3; i++) {
+      var a = START + i * STEP, f = a + F, b = f + B;
+      if (t < a) break;
+      if (t <= f) { var p = ease((t - a) / F); return { w: 20 + 40 * p, n: 40 * i + 40 * p }; }
+      if (i < 2 && t <= b) { var q = ease((t - f) / B); return { w: 60 - 40 * q, n: 40 * (i + 1) }; }
+    }
+    return { w: 60, n: 120 };
+  }
+
+  function leave() {
+    if (done) return;
+    done = true;
+    intro.classList.add("leave");
+    setTimeout(function () { intro.remove(); root.style.overflow = ""; }, 480);
+  }
+
+  function frame(now) {
+    if (done) return;
+    var t = now - t0;
+    var s = state(t);
+    var scale = 1;
+
+    if (t >= END && t <= END + 400) {
+      var p = (t - END) / 400;
+      scale = 1 + 0.07 * Math.sin(Math.PI * p);
+      ring.setAttribute("r", (30 + 50 * p).toFixed(1));
+      ring.setAttribute("opacity", (1 - p).toFixed(2));
+    } else if (t > END + 400) {
+      ring.setAttribute("opacity", "0");
+    }
+
+    wrench.setAttribute("transform", "rotate(" + s.w.toFixed(2) + ")");
+    nut.setAttribute("transform", "rotate(" + s.n.toFixed(2) + ") scale(" + scale.toFixed(3) + ")");
+
+    var v = Math.max(0, 2 * (1 - s.n / 120));
+    lash.textContent = v.toFixed(1).replace(".", ",");
+    if (t >= END) reading.classList.add("zero");
+
+    if (t >= END + 50) {
+      var k = Math.min(1, (t - END - 50) / 400);
+      brand.style.opacity = k;
+      brand.style.transform = "translateY(" + (10 * (1 - k)).toFixed(1) + "px)";
+    }
+
+    if (t >= HOLD) { leave(); return; }
+    requestAnimationFrame(frame);
+  }
+
+  intro.addEventListener("click", leave);
+  document.addEventListener("keydown", leave, { once: true });
+  setTimeout(leave, 6000); // страховка
+
+  requestAnimationFrame(function (now) { t0 = now; frame(now); });
+})();
+</script>
+</body>
+</html>
