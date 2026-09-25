@@ -2,983 +2,1360 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Нулевой люфт — автосервис по немецким и японским авто в Кокшетау</title>
-<meta name="description" content="Диагностика, ходовая, тормоза и плановое ТО. Специализация — немецкие и японские авто. Записаться онлайн, написать в WhatsApp или позвонить.">
-<link rel="canonical" href="https://autoservice.tinycraft.fun/">
-<meta property="og:type" content="business.business">
-<meta property="og:site_name" content="Нулевой люфт">
-<meta property="og:title" content="Нулевой люфт — автосервис по немецким и японским авто">
-<meta property="og:description" content="Диагностика за 40 минут, ходовая и тормоза, плановое ТО. 12 месяцев гарантии. Запись онлайн.">
-<meta property="og:image" content="https://autoservice.tinycraft.fun/og-cover.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://autoservice.tinycraft.fun/">
-<meta property="og:locale" content="ru_RU">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#17212B">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Кругосветка по английскому</title>
+<meta name="theme-color" content="#2446C8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AutoRepair",
-  "name": "Нулевой люфт",
-  "image": "https://autoservice.tinycraft.fun/og-cover.png",
-  "telephone": "+7-700-000-00-00",
-  "priceRange": "от 500 ₽",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "ул. Гаражная, 14, бокс 3",
-    "addressLocality": "Кокшетау",
-    "addressCountry": "KZ"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": 53.2833, "longitude": 69.3833 },
-  "openingHours": "Mo-Sa 09:00-19:00",
-  "sameAs": ["https://wa.me/77000000000", "https://t.me/CTO77_bot", "https://instagram.com/nulevoy_luft", "https://youtube.com/@nulevoy_luft"]
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root {
-  --bg: #E4E7EA;
-  --panel: #FFFFFF;
-  --ink: #17212B;
-  --steel: #4E5D6B;
-  --line: #B9C1C9;
-  --accent: #1E4BD8;
-  --accent-text: #1E4BD8;
-  --on-accent: #FFFFFF;
-  --hazard: #FFC61A;
-  --stripe-dark: #17212B;
-  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
-  --font-body: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-
+  --bg: #EEF2FF; --card: #FFFFFF; --ink: #141B4D; --muted: #5B6390; --line: #D5DBF5;
+  --blue: #2446C8; --blue-soft: #DCE3FF; --red: #E0413A; --gold: #F2B33D; --gold-ink: #6B4A00;
+  --mint: #139A63; --mint-soft: #D6F5E6; --err: #D63B4A; --err-soft: #FDE1E4; --on-blue: #FFFFFF;
+  --shadow: 0 10px 30px rgba(20, 27, 77, 0.12);
+  --blob1: #BFCBFF; --blob2: #FFD2CF; --blob3: #FFE7B3;
+  --font-ui: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-word: "Fraunces", Georgia, "Times New Roman", serif;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #12181F;
-    --panel: #1B242D;
-    --ink: #E8ECEF;
-    --steel: #9AA8B5;
-    --line: #34424F;
-    --accent: #3D68F0;
-    --accent-text: #8CA6FF;
+    --bg: #0C1233; --card: #18214F; --ink: #EEF1FF; --muted: #A3AAD6; --line: #2A3470;
+    --blue: #5B7BFF; --blue-soft: #222C66; --red: #FF5A52; --gold: #F5C25A; --gold-ink: #3A2800;
+    --mint: #2FC98A; --mint-soft: #123D32; --err: #FF6B78; --err-soft: #3D1522;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35); --blob1: #26307A; --blob2: #4A1F3A; --blob3: #3A3313;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #12181F;
-  --panel: #1B242D;
-  --ink: #E8ECEF;
-  --steel: #9AA8B5;
-  --line: #34424F;
-  --accent: #3D68F0;
-  --accent-text: #8CA6FF;
+  --bg: #0C1233; --card: #18214F; --ink: #EEF1FF; --muted: #A3AAD6; --line: #2A3470;
+  --blue: #5B7BFF; --blue-soft: #222C66; --red: #FF5A52; --gold: #F5C25A; --gold-ink: #3A2800;
+  --mint: #2FC98A; --mint-soft: #123D32; --err: #FF6B78; --err-soft: #3D1522;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35); --blob1: #26307A; --blob2: #4A1F3A; --blob3: #3A3313;
 }
-
 *, *::before, *::after { box-sizing: inherit; }
-html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); }
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.55;
-  -webkit-text-size-adjust: 100%;
-}
-h1, h2, h3 { margin: 0; font-weight: 600; }
-h1, h2 { font-family: var(--font-display); letter-spacing: -0.01em; }
-p { margin: 0; }
-a { color: inherit; }
-button, input, select { font: inherit; color: inherit; }
-:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 2px; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 16px; line-height: 1.45;
+  -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; padding: 0; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 10px; }
+h1, h2, h3, p { margin: 0; }
 
-.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--bg); }
+.blob { position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(60px); opacity: 0.55; }
+.b1 { background: var(--blob1); top: -25vmax; left: -20vmax; animation: drift1 26s ease-in-out infinite alternate; }
+.b2 { background: var(--blob2); bottom: -30vmax; right: -25vmax; animation: drift2 30s ease-in-out infinite alternate; }
+.b3 { background: var(--blob3); top: 30%; left: 40%; width: 35vmax; height: 35vmax; opacity: 0.35; animation: drift3 22s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(12vmax, 10vmax) scale(1.1); } }
+@keyframes drift2 { to { transform: translate(-10vmax, -12vmax) scale(1.15); } }
+@keyframes drift3 { to { transform: translate(-15vmax, 8vmax); } }
 
-/* Header */
-.bar {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 10;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-}
-.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
-.brand { display: flex; flex-direction: column; line-height: 1.15; text-decoration: none; }
-.brand b { font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; }
-.brand span { font-size: 0.82rem; color: var(--steel); }
-.bar-right { display: flex; align-items: center; gap: 18px; }
-.phone { font-weight: 500; text-decoration: none; display: none; }
-@media (min-width: 640px) { .phone { display: inline; } }
+#app { max-width: 480px; margin: 0 auto; min-height: 100%; padding: 16px 16px 120px; }
+.screen { animation: enter 0.28s ease-out both; }
+@keyframes enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-height: 48px; padding: 12px 22px;
-  background: var(--accent); color: var(--on-accent);
-  border: 0; border-radius: 6px;
-  font-weight: 600; text-decoration: none; cursor: pointer;
-}
-.btn:hover { filter: brightness(1.08); }
-.btn.small { min-height: 42px; padding: 8px 16px; }
-.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.airmail { padding: 7px; border-radius: 22px; box-shadow: var(--shadow);
+  background: repeating-linear-gradient(135deg, var(--red) 0 12px, var(--card) 12px 19px, var(--blue) 19px 31px, var(--card) 31px 38px); }
+.airmail > .inner { background: var(--card); border-radius: 16px; height: 100%; }
 
-/* Hero */
-.hero { padding-top: 40px; padding-bottom: 8px; }
-.hero-grid { display: grid; gap: 28px; }
-@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; } }
-h1 { font-size: clamp(2rem, 7.4vw, 3.4rem); line-height: 1.08; }
-.lead { margin-top: 16px; max-width: 34em; color: var(--steel); font-size: 1.06rem; }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-.chip {
-  min-height: 44px; padding: 8px 16px;
-  background: transparent; border: 1.5px solid var(--ink); border-radius: 999px;
-  cursor: pointer; font-weight: 500;
-}
-.chip:hover { background: var(--panel); }
-.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 54px; padding: 12px 20px;
+  border-radius: 16px; background: var(--blue); color: var(--on-blue); font-weight: 700; font-size: 17px;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--blue) 70%, #000); transition: transform 0.08s, box-shadow 0.08s; }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 color-mix(in srgb, var(--blue) 70%, #000); }
+.btn[disabled] { opacity: 0.45; pointer-events: none; }
+.btn.quiet { background: var(--card); color: var(--ink); box-shadow: 0 4px 0 var(--line); border: 2px solid var(--line); }
+.btn.gold { background: var(--gold); color: var(--gold-ink); box-shadow: 0 4px 0 color-mix(in srgb, var(--gold) 65%, #000); }
+.btn.mint { background: var(--mint); color: #fff; box-shadow: 0 4px 0 color-mix(in srgb, var(--mint) 65%, #000); }
+.btn.err { background: var(--err); color: #fff; box-shadow: 0 4px 0 color-mix(in srgb, var(--err) 65%, #000); }
+.link { color: var(--blue); font-weight: 500; padding: 10px; display: block; margin: 8px auto 0; }
+.stack { display: grid; gap: 10px; }
 
-.panel { background: var(--panel); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
-.stripe { height: 10px; background: repeating-linear-gradient(-45deg, var(--hazard) 0 10px, var(--stripe-dark) 10px 20px); }
-.panel-body { padding: 22px 20px 24px; }
-.panel h2 { font-size: 1.25rem; line-height: 1.25; font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
-.panel dl { margin: 16px 0 0; display: grid; gap: 14px; }
-.panel dt { font-size: 0.86rem; color: var(--steel); }
-.panel dd { margin: 2px 0 0; }
-.price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
-.price { font-family: var(--font-display); font-weight: 600; font-size: 1.9rem; line-height: 1.1; }
-.price-note { color: var(--steel); font-size: 0.9rem; }
-.panel .btn { margin-top: 20px; width: 100%; }
-@media (min-width: 480px) { .panel .btn { width: auto; } }
-@media (prefers-reduced-motion: no-preference) {
-  .swap { animation: swap 0.22s ease-out; }
-  @keyframes swap { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-}
+/* заставка */
+#splash { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: var(--blue); transition: opacity 0.4s, visibility 0.4s; cursor: pointer; }
+#splash.out { opacity: 0; visibility: hidden; }
+.env { position: relative; width: 250px; height: 164px; perspective: 700px; }
+.env-body { position: absolute; inset: 0; border-radius: 12px; padding: 8px; animation: envIn 0.5s cubic-bezier(.2,.9,.3,1.3) both;
+  background: repeating-linear-gradient(135deg, #E0413A 0 12px, #fff 12px 19px, #16299A 19px 31px, #fff 31px 38px); }
+.env-body::after { content: ""; position: absolute; inset: 8px; background: #fff; border-radius: 6px; }
+.env-flap { position: absolute; left: 8px; right: 8px; top: 8px; height: 90px; z-index: 3; background: #F4F6FF;
+  clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top; animation: flap 0.5s 0.55s ease-in both; }
+.env-letter { position: absolute; left: 22px; right: 22px; top: 30px; height: 112px; z-index: 2; background: #fff; border-radius: 8px;
+  display: grid; place-items: center; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,.18); animation: letterUp 0.6s 1s cubic-bezier(.2,.9,.3,1.2) both; }
+.env-letter b { font-size: 27px; font-weight: 800; color: #16299A; line-height: 1; letter-spacing: -0.01em; }
+.env-letter span { display: block; margin-top: 6px; font-family: var(--font-word); font-size: 15px; color: #5B6390; }
+.env-front { position: absolute; left: 8px; right: 8px; bottom: 8px; height: 104px; z-index: 4; border-radius: 0 0 6px 6px;
+  background: linear-gradient(180deg, #E6EBFF, #FFFFFF 70%); clip-path: polygon(0 30%, 50% 70%, 100% 30%, 100% 100%, 0 100%); }
+@keyframes envIn { from { transform: scale(.4) rotate(-12deg); opacity: 0; } }
+@keyframes flap { to { transform: rotateX(180deg); z-index: 1; } }
+@keyframes letterUp { to { transform: translateY(-80px) rotate(-3deg); z-index: 5; } }
 
-.facts { display: grid; margin-top: 40px; border-top: 1.5px solid var(--ink); }
-.facts div { padding: 16px 0; border-bottom: 1px solid var(--line); }
-.facts b { display: block; font-weight: 600; }
-.facts span { color: var(--steel); font-size: 0.95rem; }
-@media (min-width: 720px) {
-  .facts { grid-template-columns: repeat(3, 1fr); }
-  .facts div { padding: 18px 24px 18px 0; border-bottom: 0; }
-  .facts div + div { padding-left: 24px; border-left: 1px solid var(--line); }
-}
+/* шапка */
+.top { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.hello { flex: 1; font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; background: var(--card); font-weight: 700; font-size: 15px; box-shadow: var(--shadow); }
+.chip svg { width: 18px; height: 18px; }
+.chip.off { color: var(--muted); }
 
-/* Sections */
-section { padding: 64px 0 8px; }
-h2.section-title { font-size: clamp(1.5rem, 4.6vw, 2.2rem); line-height: 1.15; }
-.section-lead { margin-top: 12px; max-width: 36em; color: var(--steel); }
+/* сцены стран */
+.scene { display: block; width: 100%; height: auto; border-radius: 16px; background: #9DB3E0; }
+.scene .cloud { animation: cloud 38s linear infinite; }
+.scene .cloud.c2 { animation-duration: 55s; animation-delay: -20s; }
+@keyframes cloud { from { transform: translateX(-120px); } to { transform: translateX(420px); } }
+.scene .bus { animation: bus 12s linear infinite; }
+@keyframes bus { from { transform: translateX(-90px); } to { transform: translateX(400px); } }
+.scene .bus .wheel { animation: bounce 0.35s ease-in-out infinite alternate; }
+@keyframes bounce { to { transform: translateY(-0.8px); } }
+.scene .rain { animation: rainCycle 16s linear infinite; }
+.scene .rain line { animation: fall 0.8s linear infinite; }
+.scene .rain line:nth-child(3n) { animation-delay: -0.3s; }
+.scene .rain line:nth-child(3n+1) { animation-delay: -0.55s; }
+@keyframes fall { from { transform: translate(0, -24px); } to { transform: translate(-6px, 24px); } }
+@keyframes rainCycle { 0%, 45% { opacity: 0; } 55%, 85% { opacity: 1; } 95%, 100% { opacity: 0; } }
+.scene .wave { animation: wave 5s ease-in-out infinite alternate; }
+@keyframes wave { to { transform: translateX(-14px); } }
+.scene .clockhand { transform-origin: 275px 80px; animation: tick 60s linear infinite; }
+@keyframes tick { to { transform: rotate(360deg); } }
 
-/* Price list */
-.prices { display: grid; gap: 32px; margin-top: 28px; }
-@media (min-width: 900px) { .prices { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
-.prices h3 { font-size: 1.05rem; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
-.prices ul { list-style: none; margin: 0; padding: 0; }
-.prices li { display: flex; align-items: baseline; gap: 8px; padding: 11px 0; }
-.prices .name { flex: 0 1 auto; }
-.prices .dots { flex: 1 1 14px; min-width: 14px; border-bottom: 2px dotted var(--line); transform: translateY(-4px); }
-.prices .sum { flex: none; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.prices .sum small { font-weight: 400; color: var(--steel); font-size: 0.85em; }
-.note { margin-top: 24px; color: var(--steel); font-size: 0.95rem; max-width: 40em; }
+.country { margin-bottom: 16px; }
+.country .inner { padding: 12px 12px 16px; }
+.country .cap { display: flex; align-items: baseline; gap: 8px; margin: 12px 4px 2px; }
+.country .cap b { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+.country .cap span { color: var(--muted); font-size: 14px; }
+.country .sub { color: var(--muted); font-size: 14px; margin: 0 4px 12px; }
+.progress-line { height: 10px; border-radius: 5px; background: var(--blue-soft); overflow: hidden; margin: 0 4px 14px; }
+.progress-line i { display: block; height: 100%; background: var(--gold); border-radius: 5px; transition: width .5s; }
 
-/* Process */
-.steps { list-style: none; margin: 28px 0 0; padding: 0; max-width: 40rem; }
-.steps li { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 16px; padding-bottom: 26px; }
-.steps li:last-child { padding-bottom: 0; }
-.steps li::before {
-  content: ""; position: absolute; left: 19px; top: 40px; bottom: 0; width: 2px; background: var(--line);
-}
-.steps li:last-child::before { display: none; }
-.step-n {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--accent); color: var(--on-accent);
-  display: grid; place-items: center; font-weight: 600;
-}
-.steps b { display: block; font-weight: 600; padding-top: 6px; }
-.steps span { color: var(--steel); }
+.goal { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); margin-bottom: 14px; }
+.ring { width: 48px; height: 48px; flex: none; }
+.ring circle { fill: none; stroke-width: 7; }
+.ring .track { stroke: var(--blue-soft); }
+.ring .val { stroke: var(--gold); stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset 0.8s ease; }
+.goal b { display: block; font-size: 16px; }
+.goal span { color: var(--muted); font-size: 14px; }
 
-/* Booking */
-.book-grid { display: grid; gap: 32px; margin-top: 28px; }
-@media (min-width: 900px) { .book-grid { grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: start; } }
-.book-side p + p { margin-top: 14px; }
-.tg { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
-.tg[hidden] { display: none; }
-.tg p { color: var(--steel); margin-bottom: 14px; }
-.form { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 22px 20px 24px; display: grid; gap: 16px; }
-@media (min-width: 560px) { .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } }
-.row2 > div + div { margin-top: 16px; }
-@media (min-width: 560px) { .row2 > div + div { margin-top: 0; } }
-label { display: block; font-weight: 500; font-size: 0.95rem; margin-bottom: 6px; }
-input, select {
-  width: 100%; min-height: 48px; padding: 10px 12px;
-  font-size: 16px;
-  background: var(--bg); border: 1.5px solid var(--line); border-radius: 4px;
-}
-input:focus, select:focus { border-color: var(--accent-text); }
-.form .btn { width: 100%; }
-.done { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.done[hidden], .form[hidden] { display: none; }
-.done .panel-body h2 { font-size: 1.25rem; }
-.done p { margin-top: 10px; }
-.done .sum { margin-top: 16px; padding: 14px 16px; background: var(--bg); border-radius: 4px; display: grid; gap: 4px; }
-.done .btn { margin-top: 20px; }
-.tiny { font-size: 0.85rem; color: var(--steel); }
+.review { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 16px; border-radius: 18px; background: var(--gold); color: var(--gold-ink);
+  font-weight: 700; margin-bottom: 16px; text-align: left; box-shadow: 0 4px 0 color-mix(in srgb, var(--gold) 65%, #000); }
+.review small { display: block; font-weight: 500; opacity: 0.85; }
+.review .n { margin-left: auto; font-size: 24px; font-weight: 800; }
 
-footer { margin-top: 72px; border-top: 1.5px solid var(--ink); padding: 28px 0 40px; }
-.foot { display: grid; gap: 18px; }
-@media (min-width: 720px) { .foot { grid-template-columns: repeat(3, 1fr); } }
-.foot b { display: block; font-weight: 600; }
-.foot span, .foot a { color: var(--steel); text-decoration: none; }
-.eyebrow { font-size: 0.9rem; font-weight: 600; color: var(--accent-text); text-transform: uppercase; letter-spacing: 0.06em; }
-h1 { margin-top: 8px; font-size: clamp(1.8rem, 6.6vw, 3rem); line-height: 1.12; }
-.specialty { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 22px; }
-.specialty span { font-size: 0.82rem; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); color: var(--steel); }
-.chips { margin-top: 20px; }
+/* маршрут */
+.section-t { font-weight: 800; font-size: 18px; margin: 22px 0 10px; }
+.route { position: relative; display: grid; gap: 8px; }
+.route::before { content: ""; position: absolute; left: 27px; top: 20px; bottom: 20px; border-left: 3px dashed var(--line); }
+.stop { position: relative; display: flex; align-items: center; gap: 14px; padding: 8px 12px 8px 4px; border-radius: 18px; text-align: left; }
+.stop .dot { position: relative; z-index: 1; flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--card); border: 3px solid var(--line); font-weight: 800; color: var(--muted); }
+.stop b { display: block; font-size: 16px; line-height: 1.25; }
+.stop small { color: var(--muted); font-size: 13px; }
+.stop.done .dot { background: var(--mint); border-color: var(--mint); color: #fff; }
+.stop.current { background: var(--card); box-shadow: var(--shadow); }
+.stop.current .dot { background: var(--blue); border-color: var(--blue); color: #fff; animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--blue) 20%, transparent); } }
+.stop.customs .dot { background: var(--gold); border-color: var(--gold); color: var(--gold-ink); font-size: 22px; }
+.stop.locked { opacity: 0.55; }
+.stop.locked .dot { font-size: 18px; }
 
-/* Галерея */
-.gallery { display: grid; gap: 14px; margin-top: 28px; }
-@media (min-width: 720px) { .gallery { grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 1fr 1fr; } }
-.gallery figure { margin: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); position: relative; }
-.gallery figure:first-child { grid-row: 1 / 3; }
-.gallery img, .gallery svg { display: block; width: 100%; height: 100%; object-fit: cover; }
-.gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px; font-size: 0.85rem; color: #fff; background: linear-gradient(0deg, rgba(0,0,0,0.55), transparent); }
+.next-countries { display: grid; gap: 10px; }
+.nc { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); }
+.nc .flag { font-size: 34px; line-height: 1; filter: saturate(0.6); }
+.nc b { display: block; }
+.nc span { color: var(--muted); font-size: 14px; }
+.nc .soon { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--muted); border: 2px dashed var(--line); border-radius: 10px; padding: 4px 8px; white-space: nowrap; }
 
-/* Карта */
-.map-wrap { margin-top: 20px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16/10; background: var(--panel); position: relative; }
-.map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
-.map-open {
-  position: absolute; right: 10px; bottom: 10px; z-index: 2;
-  display: inline-flex; align-items: center; gap: 6px;
-  min-height: 38px; padding: 0 14px; border-radius: 6px;
-  background: var(--panel); border: 1px solid var(--line);
-  font-size: 0.85rem; font-weight: 500; color: var(--ink); text-decoration: none;
-  box-shadow: 0 1px 4px rgba(23,33,43,0.18);
-}
+/* нижнее меню */
+.nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
+.nav div { max-width: 480px; margin: 0 auto; display: flex; gap: 8px; }
+.nav button { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px; border-radius: 14px; color: var(--muted); font-size: 13px; font-weight: 500; }
+.nav button svg { width: 26px; height: 26px; }
+.nav button[aria-current="page"] { color: var(--blue); background: var(--blue-soft); }
 
-/* Соцссылки */
-.social-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-.social-row a {
-  display: inline-flex; align-items: center; gap: 8px;
-  min-height: 44px; padding: 0 16px; border-radius: 999px;
-  border: 1px solid var(--line); text-decoration: none; font-weight: 500; font-size: 0.92rem;
-  color: var(--ink);
-}
-.social-row a:hover { background: var(--panel); }
-.social-row svg { width: 18px; height: 18px; flex: none; }
+/* знакомство и тест */
+.ob { min-height: calc(100vh - 140px); display: flex; flex-direction: column; }
+.ob h1 { font-size: 31px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 20px 0 10px; }
+.ob p.lead { color: var(--muted); font-size: 17px; margin-bottom: 20px; }
+.ob .grow { flex: 1; }
+.flags { display: flex; justify-content: space-between; margin: 14px 2px 0; font-size: 30px; }
+.flags span { animation: hop 2.4s ease-in-out infinite; }
+.flags span:nth-child(2) { animation-delay: .2s; } .flags span:nth-child(3) { animation-delay: .4s; }
+.flags span:nth-child(4) { animation-delay: .6s; } .flags span:nth-child(5) { animation-delay: .8s; } .flags span:nth-child(6) { animation-delay: 1s; }
+@keyframes hop { 0%, 60%, 100% { transform: none; } 30% { transform: translateY(-6px); } }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+.facts div { background: var(--card); border-radius: 16px; padding: 12px 8px; text-align: center; box-shadow: var(--shadow); }
+.facts b { display: block; font-size: 26px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+.facts span { font-size: 13px; color: var(--muted); }
+.choices { display: grid; gap: 10px; margin-bottom: 20px; }
+.choice { display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 18px; background: var(--card); border: 2px solid var(--line); text-align: left; }
+.choice b { display: block; font-size: 17px; }
+.choice span { color: var(--muted); font-size: 14px; }
+.choice .badge { flex: none; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font-weight: 800; background: var(--blue-soft); color: var(--blue); }
+.choice[aria-pressed="true"] { border-color: var(--blue); background: var(--blue-soft); }
+.dots { display: flex; gap: 6px; justify-content: center; margin: 16px 0 8px; }
+.dots i { width: 8px; height: 8px; border-radius: 4px; background: var(--line); }
+.dots i.on { width: 22px; background: var(--blue); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-/* Липкая панель CTA */
-.sticky-cta {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
-  display: flex; gap: 10px;
-  padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
-  background: var(--panel); border-top: 1px solid var(--line);
-}
-.sticky-cta a {
-  flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 48px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.95rem;
-}
-.sticky-cta .wa { background: #25D366; color: #06210F; }
-.sticky-cta .call { background: transparent; border: 1.5px solid var(--ink); color: var(--ink); }
-.sticky-cta svg { width: 20px; height: 20px; }
-body { padding-bottom: 76px; }
-@media (min-width: 720px) { .sticky-cta { display: none; } body { padding-bottom: 0; } }
+/* урок */
+.lesson-top { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.x { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; color: var(--muted); flex: none; }
+.x svg { width: 24px; height: 24px; }
+.bar { flex: 1; height: 14px; border-radius: 7px; background: var(--blue-soft); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: 7px; background: var(--mint); transition: width 0.35s ease; position: relative; }
+.bar i::after { content: ""; position: absolute; left: 6px; right: 6px; top: 3px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.4); }
+.combo { font-weight: 800; color: var(--gold); font-size: 15px; min-width: 40px; text-align: right; }
+.step-t { color: var(--muted); font-weight: 500; margin-bottom: 12px; }
+.stage { min-height: 300px; }
 
-/* Заставка: гаечный ключ затягивает гайку, люфт падает до нуля */
-.intro {
-  position: fixed; inset: 0; z-index: 100;
-  background: #17212B; color: #FFFFFF;
-  display: grid; place-items: center;
-  padding: env(safe-area-inset-top, 0px) 20px env(safe-area-inset-bottom, 0px);
-  cursor: pointer;
-  transition: transform 0.45s cubic-bezier(0.7, 0, 0.3, 1);
-}
-.intro.leave { transform: translateY(-100%); }
-.intro-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.intro svg { width: min(96vw, 430px); height: auto; display: block; }
-.intro-read { margin-top: 4px; font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; color: #9AA8B5; font-variant-numeric: tabular-nums; }
-.intro-read b { font-weight: 600; color: #FFFFFF; display: inline-block; min-width: 2.4ch; }
-.intro-read.zero b { color: #FFC61A; }
-.intro-brand { margin-top: 18px; opacity: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 6vw, 2rem); }
-.intro-brand small { display: block; margin-top: 4px; font-family: var(--font-body); font-weight: 400; font-size: 0.95rem; color: #9AA8B5; }
-.intro-skip { position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); text-align: center; font-size: 0.85rem; color: #9AA8B5; }
-@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
-/* Плавающий чат-бот */
-.chat-fab {
-  position: fixed; right: 16px; bottom: calc(92px + env(safe-area-inset-bottom, 0px));
-  z-index: 30; width: 56px; height: 56px; border-radius: 50%;
-  background: var(--accent); color: #fff; border: 0;
-  display: grid; place-items: center; box-shadow: 0 4px 14px rgba(23,33,43,0.28);
-  cursor: pointer;
-}
-.chat-fab svg { width: 26px; height: 26px; }
-.chat-fab .dot { position: absolute; top: 4px; right: 4px; width: 12px; height: 12px; border-radius: 50%; background: #FFC61A; border: 2px solid var(--panel); }
-@media (min-width: 720px) { .chat-fab { bottom: 24px; } }
+.scene-wrap { position: relative; border-radius: 16px; overflow: hidden; }
+.scene-wrap .scene { display: block; }
+.scene-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scene-intro h2 { font-size: 26px; font-weight: 800; margin: 16px 0 6px; letter-spacing: -0.01em; }
+.scene-intro p { color: var(--muted); font-size: 17px; margin-bottom: 20px; }
+.plan { display: grid; gap: 8px; margin-bottom: 20px; }
+.plan div { display: flex; gap: 10px; align-items: center; font-weight: 500; }
+.plan i { width: 28px; height: 28px; flex: none; border-radius: 9px; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); font-style: normal; font-weight: 800; font-size: 14px; }
 
-.chat-panel {
-  position: fixed; right: 16px; left: 16px; bottom: calc(158px + env(safe-area-inset-bottom, 0px));
-  z-index: 30; max-width: 360px; margin-left: auto;
-  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
-  box-shadow: 0 12px 34px rgba(23,33,43,0.28);
-  display: flex; flex-direction: column; max-height: min(64vh, 520px); overflow: hidden;
+.known-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 22px; }
+.known-list span { padding: 7px 12px; border-radius: 999px; background: var(--mint-soft); color: var(--mint); font-family: var(--font-word); font-weight: 700; font-size: 18px; }
+
+.card3d { position: relative; height: 330px; perspective: 1200px; cursor: pointer; margin-bottom: 20px; }
+.card3d .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform 0.55s cubic-bezier(.3,.8,.3,1); }
+.card3d .back { transform: rotateY(180deg); }
+.card3d.is-flipped .front { transform: rotateY(-180deg); }
+.card3d.is-flipped .back { transform: rotateY(0deg); }
+.card3d .inner { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 22px; position: relative; }
+.word { font-family: var(--font-word); font-weight: 700; font-size: clamp(36px, 11vw, 50px); line-height: 1.05; overflow-wrap: anywhere; }
+.ipa { color: var(--muted); font-size: 17px; margin-top: 8px; }
+.flip-hint { color: var(--muted); font-size: 14px; margin-top: 18px; }
+.ru { font-size: 28px; font-weight: 800; line-height: 1.15; }
+.ex { font-family: var(--font-word); font-size: 21px; font-weight: 600; margin-top: 18px; line-height: 1.3; }
+.exru { color: var(--muted); margin-top: 6px; }
+.postmark { position: absolute; top: 14px; right: 14px; width: 58px; height: 58px; border-radius: 50%; border: 2px dashed var(--red); color: var(--red);
+  display: grid; place-content: center; font-size: 22px; transform: rotate(14deg); opacity: 0.75; }
+.speak { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--blue); color: #fff; box-shadow: 0 4px 0 color-mix(in srgb, var(--blue) 70%, #000); flex: none; }
+.speak svg { width: 26px; height: 26px; }
+.speak.corner { position: absolute; top: 16px; left: 16px; width: 50px; height: 50px; }
+.speak.small { width: 40px; height: 40px; }
+.speak.small svg { width: 20px; height: 20px; }
+.speak.big { width: 96px; height: 96px; margin: 10px auto 24px; }
+.speak.big svg { width: 44px; height: 44px; }
+
+.phrases { display: grid; gap: 12px; margin-bottom: 20px; }
+.phrase { display: flex; gap: 12px; align-items: center; padding: 16px; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); }
+.phrase b { display: block; font-family: var(--font-word); font-size: 21px; font-weight: 700; line-height: 1.25; }
+.phrase span { color: var(--muted); }
+
+.chat { display: grid; gap: 10px; margin-bottom: 16px; }
+.bubble { max-width: 86%; padding: 12px 14px; border-radius: 18px; animation: pop .25s ease-out both; }
+.bubble.them { background: var(--card); box-shadow: var(--shadow); border-bottom-left-radius: 6px; justify-self: start; }
+.bubble.me { background: var(--blue); color: #fff; border-bottom-right-radius: 6px; justify-self: end; }
+.bubble .who { font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 2px; }
+.bubble .en { font-family: var(--font-word); font-size: 19px; font-weight: 600; line-height: 1.3; }
+.bubble .tr { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.hint { color: var(--err); font-weight: 500; margin: -4px 0 10px; }
+
+.q-word { font-family: var(--font-word); font-weight: 700; font-size: 40px; line-height: 1.1; text-align: center; margin: 6px 0 4px; overflow-wrap: anywhere; }
+.q-ru { font-weight: 800; font-size: 28px; text-align: center; margin: 6px 0 4px; line-height: 1.2; }
+.q-sub { text-align: center; color: var(--muted); margin-bottom: 18px; min-height: 1.4em; }
+.q-sentence { font-family: var(--font-word); font-weight: 600; font-size: 24px; line-height: 1.35; text-align: center; margin: 10px 0 6px; }
+.q-sentence .gap { display: inline-block; min-width: 90px; border-bottom: 3px solid var(--blue); color: var(--blue); }
+.options { display: grid; gap: 10px; }
+.opt { padding: 15px; border-radius: 16px; background: var(--card); border: 2px solid var(--line); box-shadow: 0 3px 0 var(--line); font-size: 18px; font-weight: 500; text-align: center; transition: border-color .15s, background .15s; }
+.opt.en { font-family: var(--font-word); font-weight: 600; font-size: 20px; }
+.opt.right { border-color: var(--mint); background: var(--mint-soft); box-shadow: 0 3px 0 var(--mint); animation: pop 0.3s; }
+.opt.wrong { border-color: var(--err); background: var(--err-soft); box-shadow: 0 3px 0 var(--err); animation: shake 0.4s; }
+.opt[disabled] { pointer-events: none; }
+@keyframes pop { 50% { transform: scale(1.04); } }
+@keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+
+.slots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 10px 0 24px; min-height: 52px; }
+.slot { width: 38px; height: 48px; border-radius: 10px; border-bottom: 3px solid var(--line); display: grid; place-items: center; font-family: var(--font-word); font-weight: 700; font-size: 24px; background: color-mix(in srgb, var(--card) 60%, transparent); }
+.slot.filled { background: var(--card); border-color: var(--blue); box-shadow: var(--shadow); }
+.built { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; min-height: 64px; padding: 10px; margin: 12px 0 20px; border-radius: 16px; border: 2px dashed var(--line); }
+.built.right, .slots.right .slot.filled { border-color: var(--mint); background: var(--mint-soft); }
+.built.wrong, .slots.wrong { animation: shake 0.4s; }
+.built.wrong, .slots.wrong .slot.filled { border-color: var(--err); background: var(--err-soft); }
+.tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.tile { min-width: 46px; height: 50px; padding: 0 12px; border-radius: 12px; background: var(--card); border: 2px solid var(--line); box-shadow: 0 3px 0 var(--line); font-family: var(--font-word); font-weight: 700; font-size: 22px; }
+.tile.w { font-size: 19px; }
+.tile.used { visibility: hidden; }
+
+.sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: 18px 16px calc(18px + env(safe-area-inset-bottom, 0px)); border-radius: 24px 24px 0 0; animation: sheetUp 0.28s cubic-bezier(.2,.9,.3,1.1) both; }
+.sheet > div { max-width: 480px; margin: 0 auto; }
+.sheet.ok { background: var(--mint-soft); }
+.sheet.bad { background: var(--err-soft); }
+.sheet h3 { font-size: 22px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+.sheet.ok h3 { color: var(--mint); }
+.sheet.bad h3 { color: var(--err); }
+.sheet p { margin: 6px 0 14px; }
+.sheet .ans { font-family: var(--font-word); font-weight: 700; font-size: 20px; }
+@keyframes sheetUp { from { transform: translateY(100%); } }
+.scrim { position: fixed; inset: 0; z-index: 30; background: rgba(10, 14, 40, 0.45); display: grid; align-items: end; }
+.dialog { background: var(--card); border-radius: 24px 24px 0 0; padding: 22px 16px calc(18px + env(safe-area-inset-bottom, 0px)); animation: sheetUp 0.25s ease-out both; }
+.dialog > div { max-width: 480px; margin: 0 auto; display: grid; gap: 10px; }
+.dialog h3 { font-size: 20px; font-weight: 800; }
+.dialog p { color: var(--muted); margin-bottom: 6px; }
+
+.result { text-align: center; padding-top: 10px; }
+.result h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; margin: 10px 0 6px; }
+.result .lead { color: var(--muted); margin-bottom: 20px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+.stat { padding: 14px 8px; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); text-align: center; }
+.stat b { display: block; font-size: 26px; font-weight: 800; }
+.stat span { color: var(--muted); font-size: 13px; }
+.stat.gold b { color: var(--gold); } .stat.mint b { color: var(--mint); } .stat.blue b { color: var(--blue); } .stat.red b { color: var(--red); }
+.goal-done { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 18px; background: var(--gold); color: var(--gold-ink); text-align: left; font-weight: 700; margin-bottom: 20px; }
+.goal-done span { font-size: 30px; }
+.slam { display: flex; justify-content: center; margin: 4px 0 24px; }
+.slam > * { animation: slam 0.55s .15s cubic-bezier(.2,.9,.3,1.4) both; }
+@keyframes slam { from { transform: scale(2.6) rotate(-18deg); opacity: 0; } 70% { transform: scale(0.94) rotate(3deg); opacity: 1; } }
+
+.stamp { --h: 4px; width: 112px; padding: calc(2.4 * var(--h)); text-align: center; transform: rotate(var(--r, -4deg)); background: var(--card);
+  -webkit-mask: radial-gradient(circle var(--h), #0000 97%, #000) round calc(-1.5 * var(--h)) calc(-1.5 * var(--h)) / calc(3 * var(--h)) calc(3 * var(--h)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--h)) calc(100% - 3 * var(--h));
+  mask: radial-gradient(circle var(--h), #0000 97%, #000) round calc(-1.5 * var(--h)) calc(-1.5 * var(--h)) / calc(3 * var(--h)) calc(3 * var(--h)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--h)) calc(100% - 3 * var(--h));
+  filter: drop-shadow(0 4px 8px rgba(20,27,77,.18)); }
+.stamp .face { border-radius: 4px; padding: 12px 6px 10px; color: #fff; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.stamp .glyph { font-size: 34px; line-height: 1; }
+.stamp .name { font-size: 12px; font-weight: 700; line-height: 1.2; }
+
+.visa { width: 166px; padding: 10px 8px; border: 3px solid var(--vc, var(--blue)); border-radius: 14px; color: var(--vc, var(--blue)); text-align: center;
+  transform: rotate(var(--r, -6deg)); background: color-mix(in srgb, var(--vc, var(--blue)) 8%, transparent); }
+.visa .flag { font-size: 30px; line-height: 1; }
+.visa b { display: block; font-size: 13px; font-weight: 800; margin-top: 4px; overflow-wrap: anywhere; }
+.visa small { display: block; font-size: 11px; font-weight: 700; opacity: .8; }
+.visa.empty { border-style: dashed; color: var(--muted); --vc: var(--line); background: transparent; }
+.visa.empty .flag { filter: grayscale(1); opacity: .45; }
+.visas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 10px; justify-items: center; margin-bottom: 8px; }
+
+.settings { display: grid; gap: 8px; }
+.seg { display: flex; gap: 6px; padding: 4px; border-radius: 14px; background: var(--card); border: 2px solid var(--line); }
+.seg button { flex: 1; padding: 10px 6px; border-radius: 10px; font-weight: 700; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+.row-t { font-weight: 500; color: var(--muted); font-size: 14px; margin-top: 10px; }
+.foot { text-align: center; color: var(--muted); font-size: 13px; margin-top: 22px; }
+.kv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+.test-word { font-family: var(--font-word); font-weight: 700; font-size: 46px; text-align: center; margin: 40px 0 8px; }
+.test-q { text-align: center; color: var(--muted); margin-bottom: 30px; }
+
+#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 40; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001s !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; }
+  .scene .rain { opacity: 0; }
 }
-.chat-panel[hidden] { display: none; }
-@media (min-width: 720px) { .chat-panel { bottom: 90px; } }
-.chat-head { display: flex; align-items: center; gap: 10px; padding: 14px 14px; background: var(--ink); color: #fff; }
-.chat-head .av { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; flex: none; }
-.chat-head .av svg { width: 18px; height: 18px; }
-.chat-head div b { display: block; font-size: 0.92rem; }
-.chat-head div span { display: block; font-size: 0.78rem; color: #9AA8B5; }
-.chat-head button { margin-left: auto; background: none; border: 0; color: #fff; width: 32px; height: 32px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; }
-.chat-head button:hover { background: rgba(255,255,255,0.12); }
-.chat-body { padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; flex: 1; background: var(--bg); }
-.msg { max-width: 84%; padding: 9px 12px; border-radius: 12px; font-size: 0.88rem; line-height: 1.4; }
-.msg.bot { align-self: flex-start; background: var(--panel); border: 1px solid var(--line); border-bottom-left-radius: 3px; }
-.msg.me { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 3px; }
-.chat-quick { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 12px; background: var(--bg); }
-.chat-quick button {
-  font-size: 0.82rem; padding: 7px 11px; border-radius: 999px; border: 1px solid var(--line);
-  background: var(--panel); color: var(--ink); cursor: pointer;
-}
-.chat-quick button:hover { background: var(--bg); }
-.chat-foot { display: flex; gap: 8px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
-.chat-foot a {
-  flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  min-height: 40px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600;
-}
-.chat-foot .a1 { background: var(--accent); color: #fff; }
-.chat-foot .a2 { background: transparent; border: 1.5px solid var(--ink); color: var(--ink); }
 </style>
-<noscript><style>.intro { display: none; }</style></noscript>
 </head>
 <body>
-
-<div class="intro" id="intro" aria-hidden="true">
-  <div class="intro-inner">
-    <svg viewBox="-160 -160 320 320" xmlns="http://www.w3.org/2000/svg">
-      <circle r="62" fill="none" stroke="#2C3A48" stroke-width="1.5"/>
-      <circle id="ring" r="30" fill="none" stroke="#FFC61A" stroke-width="3" opacity="0"/>
-      <g id="nut" transform="rotate(0)">
-        <polygon points="26,0 13,22.52 -13,22.52 -26,0 -13,-22.52 13,-22.52" fill="#FFC61A" stroke="#C99A00" stroke-width="2" stroke-linejoin="round"/>
-        <circle r="11" fill="#17212B"/>
-        <line x1="11" y1="0" x2="26" y2="0" stroke="#17212B" stroke-width="3" stroke-linecap="round"/>
-      </g>
-      <g id="wrench" transform="rotate(20)">
-        <rect x="34" y="-12" width="106" height="24" rx="12" fill="#C9D2DA" stroke="#8FA0AF" stroke-width="2"/>
-        <path fill="#C9D2DA" stroke="#8FA0AF" stroke-width="2" fill-rule="evenodd" stroke-linejoin="round"
-              d="M 40 0 A 40 40 0 1 0 -40 0 A 40 40 0 1 0 40 0 Z M 30 0 L 15 25.98 L -15 25.98 L -30 0 L -15 -25.98 L 15 -25.98 Z"/>
-        <line x1="54" y1="-5" x2="126" y2="-5" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"/>
-      </g>
-    </svg>
-    <div class="intro-read" id="reading">люфт <b id="lash">2,0</b> мм</div>
-    <div class="intro-brand" id="introBrand">Нулевой люфт<small>автосервис</small></div>
-  </div>
-  <div class="intro-skip">Нажмите, чтобы пропустить</div>
-</div>
-
-<header class="bar">
-  <div class="wrap">
-    <a class="brand" href="#top"><b>Нулевой люфт</b><span>немецкие и японские авто</span></a>
-    <div class="bar-right">
-      <a class="phone" href="tel:+77000000000">+7 (700) 000-00-00</a>
-      <a class="btn small" href="#book">Записаться</a>
-    </div>
-  </div>
-</header>
-
-<main id="top">
-  <div class="wrap hero">
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow">Кокшетау · немецкие и японские авто</p>
-        <h1>Что случилось с машиной?</h1>
-        <p class="lead">Выберите, что вы заметили. Покажем, что проверим, сколько это займёт и сколько примерно стоит.</p>
-        <div class="specialty" aria-label="Специализация">
-          <span>BMW</span><span>Mercedes</span><span>Volkswagen</span><span>Toyota</span><span>Honda</span><span>Nissan</span>
-        </div>
-        <div class="chips" id="chips" role="group" aria-label="Что случилось с машиной"></div>
-      </div>
-      <div class="panel" aria-live="polite">
-        <div class="stripe"></div>
-        <div class="panel-body" id="result"></div>
-      </div>
-    </div>
-
-    <div class="facts">
-      <div><b>12 месяцев гарантии</b><span>на все виды работ</span></div>
-      <div><b>Старые детали отдаём вам</b><span>и показываем, что именно заменили</span></div>
-      <div><b>Фото ремонта в мессенджере</b><span>присылаем до оплаты</span></div>
-    </div>
-  </div>
-
-  <section id="services">
-    <div class="wrap">
-      <h2 class="section-title">Услуги и цены</h2>
-      <p class="section-lead">Цены указаны за работу, без запчастей. Точную сумму назовём после осмотра.</p>
-      <div class="prices">
-        <div>
-          <h3>Диагностика и обслуживание</h3>
-          <ul>
-            <li><span class="name">Компьютерная диагностика</span><span class="dots"></span><span class="sum"><small>от</small> 1 200 ₽</span></li>
-            <li><span class="name">Диагностика подвески</span><span class="dots"></span><span class="sum"><small>от</small> 900 ₽</span></li>
-            <li><span class="name">Замена масла и фильтра</span><span class="dots"></span><span class="sum"><small>от</small> 900 ₽</span></li>
-            <li><span class="name">Плановое ТО</span><span class="dots"></span><span class="sum"><small>от</small> 2 500 ₽</span></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Тормоза и ходовая</h3>
-          <ul>
-            <li><span class="name">Колодки, одна ось</span><span class="dots"></span><span class="sum"><small>от</small> 1 200 ₽</span></li>
-            <li><span class="name">Диски, одна ось</span><span class="dots"></span><span class="sum"><small>от</small> 1 800 ₽</span></li>
-            <li><span class="name">Стойки стабилизатора</span><span class="dots"></span><span class="sum"><small>от</small> 1 000 ₽</span></li>
-            <li><span class="name">Развал-схождение</span><span class="dots"></span><span class="sum"><small>от</small> 2 200 ₽</span></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Двигатель и электрика</h3>
-          <ul>
-            <li><span class="name">Ремень ГРМ</span><span class="dots"></span><span class="sum"><small>от</small> 5 500 ₽</span></li>
-            <li><span class="name">Свечи зажигания</span><span class="dots"></span><span class="sum"><small>от</small> 800 ₽</span></li>
-            <li><span class="name">Замена аккумулятора</span><span class="dots"></span><span class="sum"><small>от</small> 500 ₽</span></li>
-            <li><span class="name">Заправка кондиционера</span><span class="dots"></span><span class="sum"><small>от</small> 2 200 ₽</span></li>
-          </ul>
-        </div>
-      </div>
-      <p class="note">Не нашли свою работу в списке? Опишите проблему при записи, посмотрим и назовём цену до начала ремонта.</p>
-
-      <div class="gallery">
-        <figure><svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
-<rect width="480" height="320" fill="#EDEFF1"/>
-<rect x="0" y="230" width="480" height="90" fill="#C9D2DA"/>
-<rect x="0" y="230" width="480" height="6" fill="#B9C1C9"/>
-<g opacity="0.5" stroke="#B9C1C9" stroke-width="2">
-  <line x1="0" y1="260" x2="480" y2="260"/>
-  <line x1="0" y1="292" x2="480" y2="292"/>
-</g>
-<rect x="20" y="40" width="440" height="150" rx="4" fill="#DEE2E6"/>
-<rect x="20" y="40" width="440" height="150" rx="4" fill="none" stroke="#B9C1C9" stroke-width="2"/>
-<g stroke="#B9C1C9" stroke-width="2">
-  <line x1="130" y1="40" x2="130" y2="190"/>
-  <line x1="240" y1="40" x2="240" y2="190"/>
-  <line x1="350" y1="40" x2="350" y2="190"/>
-</g>
-<!-- подъёмник -->
-<rect x="150" y="70" width="14" height="150" fill="#8FA0AF"/>
-<rect x="300" y="70" width="14" height="150" fill="#8FA0AF"/>
-<rect x="140" y="150" width="184" height="18" rx="4" fill="#17212B"/>
-<!-- машина на подъёмнике -->
-<g transform="translate(150,95)">
-  <rect x="0" y="30" width="180" height="34" rx="14" fill="#1E4BD8"/>
-  <path d="M20 30 Q45 2 85 2 L130 2 Q158 2 168 30 Z" fill="#1E4BD8"/>
-  <rect x="45" y="8" width="80" height="22" rx="6" fill="#AFC3F5"/>
-  <circle cx="35" cy="64" r="16" fill="#17212B"/>
-  <circle cx="35" cy="64" r="6" fill="#8FA0AF"/>
-  <circle cx="150" cy="64" r="16" fill="#17212B"/>
-  <circle cx="150" cy="64" r="6" fill="#8FA0AF"/>
-</g>
-<!-- инструменты на стене -->
-<g transform="translate(360,55)" stroke="#4E5D6B" stroke-width="3" fill="none" stroke-linecap="round">
-  <circle cx="15" cy="15" r="10"/>
-  <path d="M8 30 L22 55 M22 30 L8 55"/>
-  <rect x="40" y="10" width="8" height="45" rx="3" fill="#4E5D6B" stroke="none"/>
-</g>
-<circle cx="60" cy="230" r="14" fill="#FFC61A" opacity="0.9"/>
-</svg>
-<figcaption>Пост диагностики и ходовой</figcaption></figure>
-        <figure><svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
-<rect width="480" height="320" fill="#161f27"/>
-<rect x="0" y="250" width="480" height="70" fill="#232f3a"/>
-<g opacity="0.35" stroke="#3a4854" stroke-width="2">
-  <line x1="0" y1="270" x2="480" y2="270"/>
-  <line x1="0" y1="292" x2="480" y2="292"/>
-</g>
-<!-- колонны подъёмника -->
-<rect x="80" y="40" width="16" height="230" fill="#4E5D6B"/>
-<rect x="380" y="40" width="16" height="230" fill="#4E5D6B"/>
-<rect x="70" y="130" width="340" height="20" rx="6" fill="#FFC61A"/>
-<!-- поднятая машина -->
-<g transform="translate(120,60)">
-  <rect x="0" y="34" width="230" height="40" rx="16" fill="#E4E7EA"/>
-  <path d="M28 34 Q58 2 110 2 L165 2 Q205 2 218 34 Z" fill="#E4E7EA"/>
-  <rect x="60" y="10" width="100" height="24" rx="6" fill="#161f27"/>
-  <circle cx="48" cy="76" r="18" fill="#0d1319"/>
-  <circle cx="48" cy="76" r="7" fill="#4E5D6B"/>
-  <circle cx="190" cy="76" r="18" fill="#0d1319"/>
-  <circle cx="190" cy="76" r="7" fill="#4E5D6B"/>
-</g>
-<!-- искры/подсветка -->
-<circle cx="420" cy="230" r="70" fill="#FFC61A" opacity="0.06"/>
-<circle cx="60" cy="250" r="90" fill="#1E4BD8" opacity="0.10"/>
-</svg>
-<figcaption>Подъёмник, зона тормозов</figcaption></figure>
-        <figure><svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
-<rect width="480" height="320" fill="#EDEFF1"/>
-<rect x="30" y="30" width="420" height="260" rx="6" fill="#DEE2E6" stroke="#B9C1C9" stroke-width="2"/>
-<!-- перфопанель с инструментом -->
-<g fill="none" stroke="#8FA0AF" stroke-width="1.5" opacity="0.6">
-  <circle cx="60" cy="60" r="2"/><circle cx="90" cy="60" r="2"/><circle cx="120" cy="60" r="2"/>
-  <circle cx="60" cy="90" r="2"/><circle cx="90" cy="90" r="2"/><circle cx="120" cy="90" r="2"/>
-</g>
-<!-- гаечные ключи по размеру -->
-<g stroke="#17212B" stroke-width="6" stroke-linecap="round" fill="none">
-  <path d="M70 130 L180 200"/>
-  <path d="M70 160 L200 220"/>
-  <path d="M70 190 L220 240"/>
-</g>
-<g fill="#FFC61A" stroke="#C99A00" stroke-width="2">
-  <circle cx="70" cy="130" r="12"/>
-  <circle cx="70" cy="160" r="12"/>
-  <circle cx="70" cy="190" r="12"/>
-</g>
-<!-- отвёртки в стакане -->
-<g transform="translate(300,110)">
-  <rect x="0" y="60" width="70" height="60" rx="8" fill="#4E5D6B"/>
-  <line x1="15" y1="0" x2="15" y2="70" stroke="#1E4BD8" stroke-width="8" stroke-linecap="round"/>
-  <line x1="35" y1="10" x2="35" y2="70" stroke="#FFC61A" stroke-width="8" stroke-linecap="round"/>
-  <line x1="55" y1="-5" x2="55" y2="70" stroke="#17212B" stroke-width="8" stroke-linecap="round"/>
-</g>
-</svg>
-<figcaption>Инструмент для ТО</figcaption></figure>
-      </div>
-      <p class="tiny" style="margin-top:12px">Иллюстрации боксов — демо для портфолио, не фотографии реального сервиса.</p>
-    </div>
-  </section>
-
-  <section id="process">
-    <div class="wrap">
-      <h2 class="section-title">Как проходит ремонт</h2>
-      <ol class="steps">
-        <li><div class="step-n">1</div><div><b>Запись</b><span>Выберите время на сайте. Это занимает две минуты.</span></div></li>
-        <li><div class="step-n">2</div><div><b>Приёмка</b><span>Осматриваем машину при вас и записываем всё в заказ-наряд.</span></div></li>
-        <li><div class="step-n">3</div><div><b>Смета</b><span>Называем стоимость. Без вашего согласия ничего не делаем.</span></div></li>
-        <li><div class="step-n">4</div><div><b>Ремонт</b><span>Присылаем фото и видео скрытых работ в мессенджер.</span></div></li>
-        <li><div class="step-n">5</div><div><b>Выдача</b><span>Возвращаем старые детали и даём гарантию на 12 месяцев.</span></div></li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="book">
-    <div class="wrap">
-      <h2 class="section-title">Записаться на осмотр</h2>
-      <div class="book-grid">
-        <div class="book-side">
-          <a class="btn" href="https://wa.me/77000000000?text=Здравствуйте!%20Хочу%20записаться%20на%20осмотр" target="_blank" rel="noopener" style="background:#25D366;color:#06210F;display:flex;gap:8px;align-items:center;justify-content:center;width:100%">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.3 14.9 3.8 13.5 3.8 12 3.8 7.5 7.5 3.8 12 3.8S20.2 7.5 20.2 12 16.5 20.2 12 20.2zm5-6.1c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.7 9 10.2 7.7 10 7.2c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9 1-.9 2.3 0 1.3 1 2.6 1.1 2.8.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.5-.3z"/></svg>
-            Написать в WhatsApp
-          </a>
-          <p style="margin-top:14px">Оставьте заявку, и мы подтвердим время сообщением в рабочие часы.</p>
-          <p>Если не знаете, что сломалось, выберите «Не знаю, что сломалось». Осмотр без ремонта бесплатный.</p>
-          <div class="tg" id="tg" hidden>
-            <p>Быстрее в Telegram: бот отвечает на вопросы и записывает на ремонт.</p>
-            <a class="btn ghost" id="tgLink" href="#" target="_blank" rel="noopener">Открыть бота</a>
-          </div>
-        </div>
-
-        <div>
-          <form class="form" id="form">
-            <div class="row2">
-              <div><label for="name">Имя</label><input id="name" name="name" autocomplete="given-name" required></div>
-              <div><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7" required></div>
-            </div>
-            <div><label for="car">Автомобиль</label><input id="car" name="car" placeholder="Марка, модель, год" required></div>
-            <div><label for="service">Что нужно сделать</label><select id="service" name="service"></select></div>
-            <div class="row2">
-              <div><label for="date">Дата</label><input id="date" name="date" type="date" required></div>
-              <div><label for="time">Время</label><select id="time" name="time"></select></div>
-            </div>
-            <button class="btn" type="submit">Отправить заявку</button>
-          </form>
-
-          <div class="done" id="done" hidden>
-            <div class="stripe"></div>
-            <div class="panel-body">
-              <h2>Заявка принята</h2>
-              <p>Напишем на указанный номер и подтвердим время.</p>
-              <div class="sum" id="summary"></div>
-              <p class="tiny" style="margin-top:14px">Это демо-сайт: данные никуда не отправляются.</p>
-              <button class="btn ghost" type="button" id="again">Записать ещё одну машину</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div><b>Адрес</b><address style="font-style:normal;display:inline">ул. Гаражная, 14, бокс 3, Кокшетау</address></div>
-      <div><b>Часы работы</b><span>Пн–Сб с 9:00 до 19:00, воскресенье выходной</span></div>
-      <div><b>Телефон</b><a href="tel:+77000000000">+7 (700) 000-00-00</a></div>
-    </div>
-
-    <div class="map-wrap">
-      <iframe title="Автосервис на карте" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=53.2833,69.3833&z=15&output=embed"></iframe>
-      <a class="map-open" href="https://www.google.com/maps?q=53.2833,69.3833" target="_blank" rel="noopener">Открыть карту крупнее ↗</a>
-    </div>
-
-    <div class="social-row">
-      <a href="https://wa.me/77000000000" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.3 14.9 3.8 13.5 3.8 12 3.8 7.5 7.5 3.8 12 3.8S20.2 7.5 20.2 12 16.5 20.2 12 20.2z"/></svg>
-        WhatsApp
-      </a>
-      <a href="https://t.me/CTO77_bot" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 2.7 11.7c-1.2.5-1.2 1.2-.2 1.5l4.9 1.5 1.9 5.8c.2.6.4.8.8.8.4 0 .6-.2.8-.4l2-1.9 4 3c.8.4 1.3.2 1.5-.7l2.8-13.2c.3-1.2-.4-1.7-1.3-1.8zM8.6 13.9l9-5.7c.4-.3.8-.1.5.2l-7.4 6.9-.3 3.2-1.4-4.6z"/></svg>
-        Telegram
-      </a>
-      <a href="https://instagram.com/nulevoy_luft" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-        Instagram
-      </a>
-      <a href="https://youtube.com/@nulevoy_luft" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 8.5s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.2-1C15.6 5 12 5 12 5h0s-3.6 0-6.9.2c-.5 0-1.4.1-2.2 1C2.2 6.9 2 8.5 2 8.5S1.8 10.4 1.8 12.3v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.2 7.2.2s3.6 0 6.9-.2c.5-.1 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.8c0-1.9-.2-3.8-.2-3.8zM9.9 15.5v-6l5.6 3-5.6 3z"/></svg>
-        YouTube
-      </a>
-    </div>
-
-    <p class="foot-note">Демо-сайт вымышленного автосервиса. Название, цены, адрес и ссылки на мессенджеры условные.</p>
-  </div>
-</footer>
-
-<button class="chat-fab" id="chatFab" aria-label="Открыть чат с ботом" aria-expanded="false">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-  <span class="dot"></span>
-</button>
-
-<div class="chat-panel" id="chatPanel" hidden role="dialog" aria-label="Чат с ботом автосервиса">
-  <div class="chat-head">
-    <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0-1.4 0l-1.3 1.3-1.6-1.6 1.3-1.3a1 1 0 0 0 0-1.4l-1-1a1 1 0 0 0-1.4 0L6.6 4.6a3 3 0 0 0 0 4.2l1 1-5 5V19h4.2l5-5 1 1a3 3 0 0 0 4.2 0l2.3-2.3a1 1 0 0 0 0-1.4z"/></svg></div>
-    <div><b>Нулевой люфт</b><span>обычно отвечает быстро</span></div>
-    <button type="button" id="chatClose" aria-label="Закрыть чат">✕</button>
-  </div>
-  <div class="chat-body" id="chatBody">
-    <div class="msg bot">Здравствуйте! Я бот автосервиса «Нулевой люфт». Выберите вопрос ниже или напишите нам в Telegram — там я отвечаю в реальном времени.</div>
-  </div>
-  <div class="chat-quick" id="chatQuick"></div>
-  <div class="chat-foot">
-    <a class="a1" href="https://t.me/CTO77_bot" target="_blank" rel="noopener">Открыть в Telegram</a>
-    <a class="a2" href="#book" id="chatBookLink">Записаться</a>
+<div class="bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+<div id="splash" aria-hidden="true">
+  <div class="env">
+    <div class="env-body"></div>
+    <div class="env-letter"><div><b>Кругосветка</b><span>по английскому</span></div></div>
+    <div class="env-flap"></div>
+    <div class="env-front"></div>
   </div>
 </div>
-
-<div class="sticky-cta">
-  <a class="wa" href="https://wa.me/77000000000?text=Здравствуйте!%20Хочу%20записаться%20на%20осмотр" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.3 14.9 3.8 13.5 3.8 12 3.8 7.5 7.5 3.8 12 3.8S20.2 7.5 20.2 12 16.5 20.2 12 20.2z"/></svg>
-    WhatsApp
-  </a>
-  <a class="call" href="tel:+77000000000">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z"/></svg>
-    Позвонить
-  </a>
-</div>
+<main id="app" aria-live="polite"></main>
+<div id="overlay"></div>
 
 <script>
-(function () {
-  // Ссылка на Telegram-бота. Пока пусто, блок с ботом скрыт.
-  var BOT_URL = "https://t.me/CTO77_bot";
+/* Содержание «Кругосветки по английскому».
+   Страна 1 (Великобритания) заполнена полностью, страны 2–6 — только названия ситуаций.
+   Формат слова: [английское, транскрипция, перевод, пример, перевод примера].
+   Формат фразы: [английская фраза, перевод].
+   Диалог: реплики собеседника и выбор ответа; правильный вариант всегда первый в списке,
+   при показе варианты перемешиваются. */
+window.CONTENT = {
+  countries: [
+    { id: "uk", flag: "🇬🇧", name: "Великобритания", city: "Лондон", theme: "Знакомство и общение", situations: [
+      { id: "uk1", title: "Привет и знакомство", npc: "Том", scene: "Вечеринка у друзей в Лондоне. К вам подходит Том.",
+        words: [
+          ["hello", "həˈləʊ", "привет, здравствуйте", "Hello, how are you?", "Здравствуйте, как дела?"],
+          ["name", "neɪm", "имя", "What's your name?", "Как вас зовут?"],
+          ["nice", "naɪs", "приятный, хороший", "It's a nice day.", "Хороший день."],
+          ["meet", "miːt", "встречать, знакомиться", "Nice to meet you.", "Приятно познакомиться."],
+          ["from", "frɒm", "из, от", "I'm from a small town.", "Я из маленького города."],
+          ["live", "lɪv", "жить", "Where do you live?", "Где вы живёте?"],
+          ["where", "weə", "где, куда", "Where is the station?", "Где вокзал?"],
+          ["how", "haʊ", "как", "How are you?", "Как дела?"]
+        ],
+        phrases: [
+          ["Hi, I'm Anna. Nice to meet you.", "Привет, я Анна. Приятно познакомиться."],
+          ["Where are you from?", "Откуда вы?"],
+          ["I live in a small town.", "Я живу в маленьком городе."]
+        ],
+        dialog: [
+          { say: "Hi! I'm Tom.", ru: "Привет! Я Том.", options: ["Hi, I'm Anna. Nice to meet you.", "Sorry, I'm busy.", "See you tomorrow."] },
+          { say: "Nice to meet you too. Where are you from?", ru: "Мне тоже приятно. Откуда вы?", options: ["I'm from a small town.", "It's half past six.", "I have two children."] }
+        ] },
+      { id: "uk2", title: "О себе", npc: "Джейн", scene: "Поезд до Оксфорда. С вами заговорила попутчица Джейн.",
+        words: [
+          ["work", "wɜːk", "работать; работа", "I work from home.", "Я работаю из дома."],
+          ["job", "dʒɒb", "работа, должность", "I like my job.", "Мне нравится моя работа."],
+          ["student", "ˈstjuːdənt", "студент", "She is a student.", "Она студентка."],
+          ["study", "ˈstʌdi", "учиться, изучать", "I study English.", "Я изучаю английский."],
+          ["company", "ˈkʌmpəni", "компания", "He works for a big company.", "Он работает в крупной компании."],
+          ["city", "ˈsɪti", "город", "London is a big city.", "Лондон — большой город."],
+          ["speak", "spiːk", "говорить", "Do you speak English?", "Вы говорите по-английски?"],
+          ["little", "ˈlɪtl", "маленький; немного", "I know a little French.", "Я немного знаю французский."]
+        ],
+        phrases: [
+          ["What do you do?", "Чем вы занимаетесь?"],
+          ["I work for a small company.", "Я работаю в небольшой компании."],
+          ["I speak a little English.", "Я немного говорю по-английски."]
+        ],
+        dialog: [
+          { say: "So, what do you do?", ru: "Так чем вы занимаетесь?", options: ["I work for a small company.", "It looks like rain.", "Thank you for everything."] },
+          { say: "Your English is good!", ru: "У вас хороший английский!", options: ["Thanks! I speak a little English.", "Where is the station?", "I have two children."] }
+        ] },
+      { id: "uk3", title: "Семья", npc: "Марк", scene: "Коллега Марк показывает вам фото своей семьи.",
+        words: [
+          ["family", "ˈfæməli", "семья", "I have a big family.", "У меня большая семья."],
+          ["parents", "ˈpeərənts", "родители", "My parents are retired.", "Мои родители на пенсии."],
+          ["married", "ˈmærid", "женатый, замужем", "They got married last year.", "Они поженились в прошлом году."],
+          ["children", "ˈtʃɪldrən", "дети", "Do you have children?", "У вас есть дети?"],
+          ["son", "sʌn", "сын", "Our son is five.", "Нашему сыну пять лет."],
+          ["daughter", "ˈdɔːtə", "дочь", "My daughter loves music.", "Моя дочь любит музыку."],
+          ["wife", "waɪf", "жена", "This is my wife, Kate.", "Это моя жена Кейт."],
+          ["older", "ˈəʊldə", "старше, старший", "My sister is older than me.", "Моя сестра старше меня."]
+        ],
+        phrases: [
+          ["Are you married?", "Вы женаты (замужем)?"],
+          ["I have two children.", "У меня двое детей."],
+          ["My parents live in another city.", "Мои родители живут в другом городе."]
+        ],
+        dialog: [
+          { say: "Look, this is my family!", ru: "Смотрите, это моя семья!", options: ["Nice! Is this your wife?", "Sorry, I'm busy.", "What time is it?"] },
+          { say: "Yes, that's Kate. Do you have children?", ru: "Да, это Кейт. У вас есть дети?", options: ["Yes, I have two children.", "It's freezing today.", "I work from home."] }
+        ] },
+      { id: "uk4", title: "Время и даты", npc: "Сэм", scene: "Вы гуляете по Лондону с другом Сэмом. Он забыл телефон в отеле.",
+        words: [
+          ["time", "taɪm", "время; раз", "What time is it?", "Который час?"],
+          ["o'clock", "əˈklɒk", "час (ровно)", "The shop opens at nine o'clock.", "Магазин открывается в девять."],
+          ["half", "hɑːf", "половина", "It's half past two.", "Половина третьего."],
+          ["quarter", "ˈkwɔːtə", "четверть", "It's a quarter to five.", "Без четверти пять."],
+          ["today", "təˈdeɪ", "сегодня", "I'm free today.", "Сегодня я свободен."],
+          ["tomorrow", "təˈmɒrəʊ", "завтра", "See you tomorrow.", "До завтра."],
+          ["week", "wiːk", "неделя", "I work five days a week.", "Я работаю пять дней в неделю."],
+          ["month", "mʌnθ", "месяц", "We moved here last month.", "Мы переехали сюда в прошлом месяце."]
+        ],
+        phrases: [
+          ["What time is it?", "Который час?"],
+          ["It's half past six.", "Половина седьмого."],
+          ["See you tomorrow.", "До завтра."]
+        ],
+        dialog: [
+          { say: "What time is it?", ru: "Который час?", options: ["It's half past six.", "I'm from a small town.", "Nice to meet you."] },
+          { say: "Oh, I have to go! Can we meet tomorrow?", ru: "Ой, мне пора! Встретимся завтра?", options: ["Sure. See you tomorrow!", "My daughter loves music.", "It looks like rain."] }
+        ] },
+      { id: "uk5", title: "Погода", npc: "Администратор", scene: "Утро в лондонском отеле. Вы выходите на прогулку.",
+        words: [
+          ["weather", "ˈweðə", "погода", "The weather is great today.", "Сегодня отличная погода."],
+          ["sunny", "ˈsʌni", "солнечный", "It's a sunny morning.", "Солнечное утро."],
+          ["rain", "reɪn", "дождь", "Take an umbrella, it's going to rain.", "Возьмите зонт, будет дождь."],
+          ["cold", "kəʊld", "холодный", "It's cold outside.", "На улице холодно."],
+          ["warm", "wɔːm", "тёплый", "The water is warm.", "Вода тёплая."],
+          ["wind", "wɪnd", "ветер", "The wind is very strong.", "Ветер очень сильный."],
+          ["snow", "snəʊ", "снег", "We had a lot of snow in winter.", "Зимой было много снега."],
+          ["forecast", "ˈfɔːkɑːst", "прогноз", "The forecast says it will be sunny.", "По прогнозу будет солнечно."]
+        ],
+        phrases: [
+          ["What's the weather like?", "Какая погода?"],
+          ["It's freezing today.", "Сегодня очень холодно."],
+          ["It looks like rain.", "Похоже, будет дождь."]
+        ],
+        dialog: [
+          { say: "Good morning! Going out?", ru: "Доброе утро! Уходите?", options: ["Yes. What's the weather like?", "I have two children.", "Can I call you back?"] },
+          { say: "It's cold and cloudy.", ru: "Холодно и облачно.", options: ["Oh no, it looks like rain.", "Nice to meet you too.", "I work for a small company."] }
+        ] },
+      { id: "uk6", title: "Хобби", npc: "Лиза", scene: "Хостел в Лондоне. Вы знакомитесь с соседкой по комнате Лизой.",
+        words: [
+          ["hobby", "ˈhɒbi", "хобби", "My hobby is photography.", "Моё хобби — фотография."],
+          ["enjoy", "ɪnˈdʒɔɪ", "получать удовольствие, любить", "I enjoy long walks.", "Я люблю долгие прогулки."],
+          ["music", "ˈmjuːzɪk", "музыка", "What kind of music do you like?", "Какую музыку вы любите?"],
+          ["read", "riːd", "читать", "I read before bed.", "Я читаю перед сном."],
+          ["cook", "kʊk", "готовить", "My husband cooks dinner.", "Ужин готовит мой муж."],
+          ["travel", "ˈtrævl", "путешествовать", "We travel every summer.", "Мы путешествуем каждое лето."],
+          ["weekend", "ˌwiːkˈend", "выходные", "What are you doing this weekend?", "Что вы делаете в эти выходные?"],
+          ["favourite", "ˈfeɪvərɪt", "любимый", "Pizza is my favourite food.", "Пицца — моя любимая еда."]
+        ],
+        phrases: [
+          ["What do you do in your free time?", "Чем вы занимаетесь в свободное время?"],
+          ["I enjoy cooking.", "Я люблю готовить."],
+          ["What's your favourite movie?", "Какой ваш любимый фильм?"]
+        ],
+        dialog: [
+          { say: "What do you do in your free time?", ru: "Чем вы занимаетесь в свободное время?", options: ["I enjoy cooking.", "It's a quarter to five.", "Sorry, I don't understand."] },
+          { say: "Me too! What's your favourite food?", ru: "Я тоже! Какая ваша любимая еда?", options: ["Pizza is my favourite food.", "My parents are retired.", "See you tomorrow."] }
+        ] },
+      { id: "uk7", title: "Договориться о встрече", npc: "Эмма", scene: "Новая знакомая Эмма хочет встретиться на выходных.",
+        words: [
+          ["free", "friː", "свободный; бесплатный", "Are you free tonight?", "Вы свободны сегодня вечером?"],
+          ["busy", "ˈbɪzi", "занятой", "I'm busy on Monday.", "В понедельник я занят."],
+          ["plan", "plæn", "план; планировать", "Do you have any plans?", "У вас есть планы?"],
+          ["invite", "ɪnˈvaɪt", "приглашать", "I want to invite you to dinner.", "Хочу пригласить вас на ужин."],
+          ["later", "ˈleɪtə", "позже", "Let's talk later.", "Давайте поговорим позже."],
+          ["place", "pleɪs", "место", "I know a nice place for lunch.", "Я знаю хорошее место для обеда."],
+          ["sure", "ʃɔː", "конечно; уверенный", "Sure, why not?", "Конечно, почему бы и нет?"],
+          ["instead", "ɪnˈsted", "вместо этого", "Let's meet on Sunday instead.", "Давайте лучше встретимся в воскресенье."]
+        ],
+        phrases: [
+          ["Are you free on Friday?", "Вы свободны в пятницу?"],
+          ["How about seven o'clock?", "Как насчёт семи часов?"],
+          ["Sorry, I'm busy. Maybe next week?", "Извините, я занят. Может, на следующей неделе?"]
+        ],
+        dialog: [
+          { say: "Are you free on Saturday?", ru: "Вы свободны в субботу?", options: ["Sorry, I'm busy. How about Sunday instead?", "I read before bed.", "Our son is five."] },
+          { say: "Sunday is fine! What time?", ru: "Воскресенье подходит! Во сколько?", options: ["How about seven o'clock?", "It's cold outside.", "Where are you from?"] }
+        ] },
+      { id: "uk8", title: "Звонки и сообщения", npc: "Курьер", scene: "Вам звонит курьер, а вы на встрече.",
+        words: [
+          ["call", "kɔːl", "звонить; звонок", "I'll call you tonight.", "Я позвоню вам вечером."],
+          ["phone", "fəʊn", "телефон", "My phone is dead.", "У меня сел телефон."],
+          ["message", "ˈmesɪdʒ", "сообщение", "I got your message.", "Я получил ваше сообщение."],
+          ["text", "tekst", "писать сообщение; текст", "Text me the address.", "Пришлите мне адрес сообщением."],
+          ["number", "ˈnʌmbə", "номер; число", "Is this the right number?", "Это правильный номер?"],
+          ["answer", "ˈɑːnsə", "отвечать; ответ", "Nobody answers the phone.", "Никто не берёт трубку."],
+          ["back", "bæk", "назад, обратно", "I'll be back in five minutes.", "Я вернусь через пять минут."],
+          ["voice", "vɔɪs", "голос", "Send me a voice message.", "Пришлите мне голосовое сообщение."]
+        ],
+        phrases: [
+          ["Can I call you back?", "Можно я вам перезвоню?"],
+          ["Text me when you're ready.", "Напишите мне, когда будете готовы."],
+          ["What's your phone number?", "Какой у вас номер телефона?"]
+        ],
+        dialog: [
+          { say: "Hello! I have a delivery for you.", ru: "Здравствуйте! У меня для вас доставка.", options: ["Sorry, I'm busy. Can I call you back?", "Pizza is my favourite food.", "It's a sunny morning."] },
+          { say: "Sure. Or just text me when you're ready.", ru: "Конечно. Или просто напишите, когда будете готовы.", options: ["OK, thank you!", "Where is the station?", "I have a big family."] }
+        ] },
+      { id: "uk9", title: "Вежливые просьбы", npc: "Прохожая", scene: "Вы спросили дорогу, но прохожая объяснила слишком быстро.",
+        words: [
+          ["please", "pliːz", "пожалуйста (просьба)", "Two coffees, please.", "Два кофе, пожалуйста."],
+          ["sorry", "ˈsɒri", "извините; жаль", "Sorry, I'm late.", "Извините, я опоздал."],
+          ["excuse", "ɪkˈskjuːz", "извинять, прощать", "Excuse me, is this seat free?", "Простите, это место свободно?"],
+          ["could", "kʊd", "мог бы (вежливая просьба)", "Could you open the door?", "Не могли бы вы открыть дверь?"],
+          ["help", "help", "помогать; помощь", "Can I help you?", "Вам помочь?"],
+          ["mind", "maɪnd", "возражать, быть против", "Do you mind if I sit here?", "Вы не против, если я сяду здесь?"],
+          ["repeat", "rɪˈpiːt", "повторять", "Could you repeat the question?", "Не могли бы вы повторить вопрос?"],
+          ["understand", "ˌʌndəˈstænd", "понимать", "I don't understand this word.", "Я не понимаю это слово."]
+        ],
+        phrases: [
+          ["Could you help me, please?", "Не могли бы вы мне помочь?"],
+          ["Sorry, I don't understand.", "Извините, я не понимаю."],
+          ["Could you say that again, please?", "Не могли бы вы повторить?"]
+        ],
+        dialog: [
+          { say: "Go straight, turn left at the second traffic lights, and it's next to the bank.", ru: "Идите прямо, на втором светофоре налево, это рядом с банком.", options: ["Sorry, could you say that again, please?", "I enjoy cooking.", "My phone is dead."] },
+          { say: "Of course. Go straight, then turn left.", ru: "Конечно. Идите прямо, потом налево.", options: ["Thank you for your help!", "Are you married?", "It's half past six."] }
+        ] },
+      { id: "uk10", title: "Прощание", npc: "Друзья", scene: "Последний вечер в Лондоне. Вы прощаетесь с новыми друзьями.",
+        words: [
+          ["thanks", "θæŋks", "спасибо", "Thanks for the coffee!", "Спасибо за кофе!"],
+          ["welcome", "ˈwelkəm", "добро пожаловать; не за что", "Welcome to London!", "Добро пожаловать в Лондон!"],
+          ["goodbye", "ɡʊdˈbaɪ", "до свидания", "It's time to say goodbye.", "Пора прощаться."],
+          ["soon", "suːn", "скоро", "See you soon!", "До скорого!"],
+          ["care", "keə", "забота, заботиться", "Take care of yourself.", "Береги себя."],
+          ["great", "ɡreɪt", "отличный", "We had a great time.", "Мы отлично провели время."],
+          ["touch", "tʌtʃ", "касаться, прикосновение", "Don't touch the paint!", "Не трогайте краску!"],
+          ["visit", "ˈvɪzɪt", "навещать, посещать", "Come and visit us!", "Приезжайте к нам в гости!"]
+        ],
+        phrases: [
+          ["Thank you for everything.", "Спасибо за всё."],
+          ["You're welcome.", "Не за что."],
+          ["Let's keep in touch!", "Давай не теряться!"]
+        ],
+        dialog: [
+          { say: "It was great to meet you!", ru: "Было здорово познакомиться!", options: ["Thank you for everything! Let's keep in touch!", "Could you repeat the question?", "My phone is dead."] },
+          { say: "Of course! Come and visit us again.", ru: "Конечно! Приезжайте к нам снова.", options: ["Thanks! See you soon. Take care!", "I'm busy on Monday.", "What's the weather like?"] }
+        ] }
+    ] },
+    { id: "us", flag: "🇺🇸", name: "США", city: "Нью-Йорк", theme: "Город и транспорт", titles: ["Спросить дорогу", "Метро и автобус", "Такси", "Аренда машины и заправка", "Банк и банкомат", "Почта и посылки", "Парикмахерская", "Музеи и достопримечательности", "Кино и развлечения", "Спортзал"] },
+    { id: "ie", flag: "🇮🇪", name: "Ирландия", city: "Дублин", theme: "Еда и покупки", titles: ["Кофейня", "Ресторан: заказ", "Ресторан: счёт и чаевые", "Продуктовый магазин", "Рынок: цены и скидки", "Одежда: размер и примерка", "Возврат и обмен", "Покупки онлайн и доставка", "Паб", "Готовим дома по рецепту"] },
+    { id: "au", flag: "🇦🇺", name: "Австралия", city: "Сидней", theme: "Поездки и отель", titles: ["Бронирование", "Аэропорт: регистрация", "Паспортный контроль", "В самолёте", "Потерялся багаж", "Заселение в отель", "Проблема в номере", "Экскурсия", "Пляж и отдых", "Выезд и отзыв"] },
+    { id: "ca", flag: "🇨🇦", name: "Канада", city: "Торонто", theme: "Работа и учёба", titles: ["Резюме и рассказ о себе", "Собеседование", "Первый день на работе", "Совещание", "Деловые письма", "Созвон по видео", "Задачи и сроки", "Курсы и экзамены", "Зарплата и отпуск", "Знакомства по работе"] },
+    { id: "nz", flag: "🇳🇿", name: "Новая Зеландия", city: "Окленд", theme: "Здоровье и трудные ситуации", titles: ["У врача: симптомы", "Аптека", "Стоматолог", "Страховка", "Полиция: потерял документы", "Экстренный вызов", "Жалоба и спор", "Аренда жилья", "Соседи и бытовые проблемы", "Финал: рассказать о своей кругосветке"] }
+  ],
+  /* Тест уровня: 10 слов первой страны и 10 слов из следующих стран, от простых к сложным. */
+  placement: [
+    ["hello", "привет"], ["family", "семья"], ["tomorrow", "завтра"], ["weather", "погода"], ["busy", "занятой"],
+    ["message", "сообщение"], ["enjoy", "получать удовольствие"], ["understand", "понимать"], ["invite", "приглашать"], ["forecast", "прогноз"],
+    ["luggage", "багаж"], ["receipt", "чек"], ["reservation", "бронь"], ["deadline", "крайний срок"], ["interview", "собеседование"],
+    ["refund", "возврат денег"], ["insurance", "страховка"], ["complaint", "жалоба"], ["prescription", "рецепт врача"], ["landlord", "арендодатель"]
+  ]
+};
 
-  var SERVICES = [
-    "Компьютерная диагностика",
-    "Диагностика подвески",
-    "Диагностика тормозов",
-    "Плановое ТО",
-    "Диагностика запуска двигателя",
-    "Диагностика шума при движении",
-    "Кондиционер: диагностика и заправка",
-    "Не знаю, что сломалось"
-  ];
-
-  var SYMPTOMS = [
-    { id: "susp", label: "Стук в подвеске", service: 1,
-      causes: "Стойки стабилизатора, шаровые опоры, опоры амортизаторов.",
-      check: "Проверяем подвеску на подъёмнике и замеряем люфты.",
-      time: "около 1 часа", price: "от 900 ₽", note: "диагностика, входит в стоимость ремонта", cta: "Записаться на диагностику" },
-    { id: "engine", label: "Горит Check Engine", service: 0,
-      causes: "Датчики, свечи и катушки, неполадки в топливной системе.",
-      check: "Считываем коды ошибок и смотрим данные двигателя в работе.",
-      time: "около 40 минут", price: "от 1 200 ₽", note: "компьютерная диагностика", cta: "Записаться на диагностику" },
-    { id: "brakes", label: "Скрипят тормоза", service: 2,
-      causes: "Изношенные колодки, задиры на дисках, залипший суппорт.",
-      check: "Снимаем колёса, замеряем колодки и диски.",
-      time: "1–2 часа", price: "от 600 ₽", note: "диагностика тормозов", cta: "Записаться на диагностику" },
-    { id: "to", label: "Пора на ТО", service: 3,
-      causes: "Плановое обслуживание по пробегу или по сроку.",
-      check: "Меняем масло и фильтры, проверяем машину по регламенту.",
-      time: "1,5–2 часа", price: "от 2 500 ₽", note: "работа, без масла и фильтров", cta: "Записаться на ТО" },
-    { id: "start", label: "Плохо заводится", service: 4,
-      causes: "Аккумулятор, стартер, свечи, топливный насос.",
-      check: "Проверяем аккумулятор под нагрузкой, стартер и подачу топлива.",
-      time: "около 40 минут", price: "от 900 ₽", note: "диагностика", cta: "Записаться на диагностику" },
-    { id: "hum", label: "Гул при движении", service: 5,
-      causes: "Подшипники ступиц, шины, редуктор.",
-      check: "Проверяем ступицы на подъёмнике и делаем пробную поездку.",
-      time: "около 1 часа", price: "от 700 ₽", note: "диагностика", cta: "Записаться на диагностику" },
-    { id: "ac", label: "Не холодит кондиционер", service: 6,
-      causes: "Не хватает фреона, утечка, неисправный компрессор.",
-      check: "Измеряем давление в системе и ищем утечки.",
-      time: "1–2 часа", price: "от 2 200 ₽", note: "заправка, диагностика входит", cta: "Записаться на диагностику" },
-    { id: "other", label: "Другое", service: 7,
-      causes: "Определим на осмотре.",
-      check: "Осматриваем машину вместе с вами и объясняем, что видим.",
-      time: "по результатам осмотра", price: "бесплатно", note: "осмотр без ремонта", cta: "Записаться на осмотр" }
-  ];
-
-  var chips = document.getElementById("chips");
-  var result = document.getElementById("result");
-  var serviceSel = document.getElementById("service");
-  var timeSel = document.getElementById("time");
-  var current = 0;
-
-  function esc(s) {
-    return String(s).replace(/[&<>"]/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
-    });
-  }
-
-  function renderChips() {
-    chips.innerHTML = "";
-    SYMPTOMS.forEach(function (s, i) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "chip";
-      b.textContent = s.label;
-      b.setAttribute("aria-pressed", i === current ? "true" : "false");
-      b.addEventListener("click", function () { select(i); });
-      chips.appendChild(b);
-    });
-  }
-
-  function renderResult(animate) {
-    var s = SYMPTOMS[current];
-    result.className = "panel-body" + (animate ? " swap" : "");
-    result.innerHTML =
-      "<h2>" + esc(s.label) + "</h2>" +
-      "<dl>" +
-        "<div><dt>Что может быть</dt><dd>" + esc(s.causes) + "</dd></div>" +
-        "<div><dt>Что делаем</dt><dd>" + esc(s.check) + "</dd></div>" +
-        "<div><dt>Сколько займёт</dt><dd>" + esc(s.time) + "</dd></div>" +
-      "</dl>" +
-      '<div class="price-row"><span class="price">' + esc(s.price) + '</span><span class="price-note">' + esc(s.note) + "</span></div>" +
-      '<button class="btn" type="button" id="cta">' + esc(s.cta) + "</button>";
-    document.getElementById("cta").addEventListener("click", function () {
-      serviceSel.value = String(s.service);
-      document.getElementById("book").scrollIntoView();
-      setTimeout(function () { document.getElementById("name").focus({ preventScroll: true }); }, 350);
-    });
-  }
-
-  function select(i) {
-    current = i;
-    Array.prototype.forEach.call(chips.children, function (c, idx) {
-      c.setAttribute("aria-pressed", idx === i ? "true" : "false");
-    });
-    renderResult(true);
-  }
-
-  // Форма записи
-  SERVICES.forEach(function (name, i) {
-    var o = document.createElement("option");
-    o.value = String(i);
-    o.textContent = name;
-    serviceSel.appendChild(o);
-  });
-  for (var h = 9; h <= 18; h++) {
-    var t = document.createElement("option");
-    var label = (h < 10 ? "0" : "") + h + ":00";
-    t.value = label; t.textContent = label;
-    timeSel.appendChild(t);
-  }
-
-  var dateInput = document.getElementById("date");
-  var now = new Date();
-  var iso = now.getFullYear() + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" + ("0" + now.getDate()).slice(-2);
-  dateInput.min = iso;
-
-  var form = document.getElementById("form");
-  var done = document.getElementById("done");
-  var summary = document.getElementById("summary");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var d = dateInput.value ? dateInput.value.split("-").reverse().join(".") : "";
-    summary.innerHTML =
-      "<span><b>" + esc(document.getElementById("name").value) + "</b>, " + esc(document.getElementById("phone").value) + "</span>" +
-      "<span>" + esc(document.getElementById("car").value) + "</span>" +
-      "<span>" + esc(SERVICES[Number(serviceSel.value)]) + "</span>" +
-      "<span>" + esc(d) + " в " + esc(timeSel.value) + "</span>";
-    form.hidden = true;
-    done.hidden = false;
-    done.scrollIntoView({ block: "center" });
-  });
-
-  document.getElementById("again").addEventListener("click", function () {
-    form.reset();
-    form.hidden = false;
-    done.hidden = true;
-  });
-
-  if (BOT_URL) {
-    document.getElementById("tgLink").href = BOT_URL;
-    document.getElementById("tg").hidden = false;
-  }
-
-  renderChips();
-  renderResult(false);
-})();
 </script>
 <script>
 (function () {
-  var QUICK = [
-    { q: "Сколько стоит диагностика?", a: "Компьютерная диагностика от 1 200 ₽, диагностика подвески от 900 ₽. Если ремонт делаете у нас, диагностику включаем в стоимость работ." },
-    { q: "Есть ли гарантия?", a: "Да, 12 месяцев на все виды работ. Старые детали возвращаем, фото ремонта присылаем в Telegram." },
-    { q: "Как записаться?", a: "Прямо здесь на сайте кнопкой «Записаться», в нашем Telegram-боте или в WhatsApp — как удобнее." },
-    { q: "Где вы находитесь?", a: "Кокшетау, ул. Гаражная, 14, бокс 3. Работаем Пн–Сб с 9:00 до 19:00." }
-  ];
+"use strict";
 
-  var fab = document.getElementById("chatFab");
-  var panel = document.getElementById("chatPanel");
-  var closeBtn = document.getElementById("chatClose");
-  var body = document.getElementById("chatBody");
-  var quick = document.getElementById("chatQuick");
-  var bookLink = document.getElementById("chatBookLink");
-  var opened = false;
+/* ================= Telegram ================= */
+// Telegram-скрипт загружается и в обычном браузере, но initData заполнена только внутри Telegram
+var TG = (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData) ? window.Telegram.WebApp : null;
+function tgv(v) { try { return TG && TG.isVersionAtLeast && TG.isVersionAtLeast(v); } catch (e) { return false; } }
+if (TG) {
+  try { TG.ready(); TG.expand(); } catch (e) {}
+  try { if (TG.colorScheme) document.documentElement.setAttribute("data-theme", TG.colorScheme); } catch (e) {}
+}
+function haptic(kind) {
+  if (!TG || !tgv("6.1") || !TG.HapticFeedback) return;
+  try {
+    if (kind === "ok") TG.HapticFeedback.notificationOccurred("success");
+    else if (kind === "bad") TG.HapticFeedback.notificationOccurred("error");
+    else TG.HapticFeedback.impactOccurred("light");
+  } catch (e) {}
+}
+function userName() { try { var u = TG && TG.initDataUnsafe && TG.initDataUnsafe.user; return u && u.first_name ? u.first_name : ""; } catch (e) { return ""; } }
 
-  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+/* ================= Содержание ================= */
+var C = window.CONTENT;
+var UK = C.countries[0];
+var WORDS = {}, PHRASES = {};
+UK.situations.forEach(function (s, si) {
+  s.index = si;
+  s.words = s.words.map(function (a) { var w = { en: a[0], ipa: a[1], ru: a[2], ex: a[3], exRu: a[4], sit: s.id }; WORDS[w.en] = w; return w; });
+  s.phrases = s.phrases.map(function (a, i) { var p = { id: s.id + "-" + i, en: a[0], ru: a[1], sit: s.id }; PHRASES[p.id] = p; return p; });
+});
+var ALL_WORDS = Object.keys(WORDS).map(function (k) { return WORDS[k]; });
+var TOTAL_WORDS = 500, TOTAL_SITS = 60;
+function sitById(id) { for (var i = 0; i < UK.situations.length; i++) if (UK.situations[i].id === id) return UK.situations[i]; return null; }
+var SIT_COLORS = ["#2446C8", "#139A63", "#E0413A", "#7A4FD1", "#C98A12", "#0F7C8C", "#B8321F", "#16299A", "#8C1F4A", "#2F7D32"];
+var VISA_COLORS = { uk: "#16299A", us: "#B8321F", ie: "#139A63", au: "#C98A12", ca: "#D63B4A", nz: "#0F7C8C" };
 
-  function addMsg(text, who) {
-    var d = document.createElement("div");
-    d.className = "msg " + who;
-    d.textContent = text;
-    body.appendChild(d);
-    body.scrollTop = body.scrollHeight;
+/* ================= Даты и состояние ================= */
+function dayNum(d) { d = d || new Date(); return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); }
+var INTERVALS = [0, 1, 3, 7, 14, 30];
+var KEY = "krug:v1";
+function fresh() { return { v: 1, onboarded: false, goal: 50, xp: 0, hist: {}, streak: 0, lastGoal: null, words: {}, sit: {}, visas: {}, customsTry: {}, placed: null, ts: 0 }; }
+
+/* Сжатый вид для хранения: слова одной строкой "hello.2.20356,name.1.20357"
+   вместо объекта — примерно в 3 раза короче, важно для облака Telegram. */
+function pack(st) {
+  var o = Object.assign({}, st);
+  o.words = Object.keys(st.words).map(function (k) { return k + "." + st.words[k].b + "." + st.words[k].d; }).join(",");
+  return JSON.stringify(o);
+}
+function unpack(str) {
+  var o = JSON.parse(str);
+  if (typeof o.words === "string") {
+    var w = {};
+    o.words.split(",").forEach(function (item) {
+      if (!item) return;
+      var p = item.split("."), d = +p.pop(), b = +p.pop();
+      w[p.join(".")] = { b: b, d: d };
+    });
+    o.words = w;
   }
+  return Object.assign(fresh(), o);
+}
+function loadLocal() { try { var s = localStorage.getItem(KEY); return s ? unpack(s) : null; } catch (e) { return null; } }
+var state = loadLocal() || fresh();
 
-  function renderQuick() {
-    quick.innerHTML = "";
-    QUICK.forEach(function (item) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.textContent = item.q;
-      b.addEventListener("click", function () {
-        addMsg(item.q, "me");
-        setTimeout(function () { addMsg(item.a, "bot"); }, 300);
+/* ---------- Удалённое хранилище: облако Telegram или хранилище опубликованной страницы ---------- */
+var remote = null;          // { name, load(): Promise<string|null>, save(str): Promise }
+var storageName = "только это устройство";
+var CHUNK = 3800, MAX_CHUNKS = 20;
+
+function tgCall(method, args) {
+  return new Promise(function (resolve, reject) {
+    try { TG.CloudStorage[method].apply(TG.CloudStorage, args.concat([function (err, val) { if (err) reject(err); else resolve(val); }])); }
+    catch (e) { reject(e); }
+  });
+}
+function telegramBackend() {
+  if (!TG || !tgv("6.9") || !TG.CloudStorage) return null;
+  return {
+    name: "облако Telegram",
+    load: function () {
+      return tgCall("getItem", ["p_n"]).then(function (n) {
+        n = +n || 0;
+        if (!n) return null;
+        var keys = []; for (var i = 0; i < n; i++) keys.push("p_" + i);
+        return tgCall("getItems", [keys]).then(function (vals) { return keys.map(function (k) { return vals[k] || ""; }).join(""); });
       });
-      quick.appendChild(b);
+    },
+    save: function (str) {
+      var parts = [];
+      for (var i = 0; i < str.length; i += CHUNK) parts.push(str.slice(i, i + CHUNK));
+      if (parts.length > MAX_CHUNKS) return Promise.reject(new Error("слишком большой прогресс"));
+      // сначала части, в конце — их количество: при обрыве старая версия остаётся целой
+      return parts.reduce(function (p, part, i) { return p.then(function () { return tgCall("setItem", ["p_" + i, part]); }); }, Promise.resolve())
+        .then(function () { return tgCall("setItem", ["p_n", String(parts.length)]); });
+    }
+  };
+}
+function artifactBackend() {
+  if (!window.claude || typeof window.claude.use !== "function") return Promise.resolve(null);
+  return Promise.all([window.claude.use("db"), window.claude.use("user")]).then(function (r) {
+    var db = r[0], user = r[1];
+    if (!db || !user) return null;
+    return user.id().then(function (uid) {
+      if (!uid) return null;
+      var ref = db.doc("data/users/" + uid + "/progress");
+      return {
+        name: "ваш аккаунт Claude",
+        load: function () { return ref.get().then(function (snap) { var d = snap.exists && snap.data(); return d && typeof d.p === "string" ? d.p : null; }); },
+        save: function (str) { return ref.set({ p: str }); }
+      };
     });
-  }
+  }).catch(function () { return null; });
+}
 
-  function open() {
-    panel.hidden = false;
-    fab.setAttribute("aria-expanded", "true");
-    opened = true;
-    body.scrollTop = body.scrollHeight;
-  }
-  function close() {
-    panel.hidden = true;
-    fab.setAttribute("aria-expanded", "false");
-    opened = false;
-  }
+var saving = false, pendingSave = null, saveTimer = null;
+function flushRemote() {
+  if (!remote || saving || pendingSave === null) return;
+  var str = pendingSave; pendingSave = null; saving = true;
+  remote.save(str).catch(function () {}).then(function () { saving = false; flushRemote(); });
+}
+function save() {
+  state.ts = Date.now();
+  var ks = Object.keys(state.hist).map(Number).sort(function (a, b) { return a - b; });
+  while (ks.length > 30) delete state.hist[ks.shift()];
+  var str = pack(state);
+  try { localStorage.setItem(KEY, str); } catch (e) {}
+  pendingSave = str;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(flushRemote, 600);   // несколько быстрых изменений — одна запись
+}
+function adoptRemote(str) {
+  try {
+    var st = unpack(str);
+    if (st.ts > (state.ts || 0)) {
+      state = st;
+      try { localStorage.setItem(KEY, str); } catch (e) {}
+      if (!session && !test && !result) { view = state.onboarded ? (view === "ob" ? "map" : view) : "ob"; render(); }
+    } else if ((state.ts || 0) > st.ts) {
+      save();                                  // на устройстве новее — отправляем в облако
+    }
+  } catch (e) {}
+}
+function connectRemote() {
+  var tg = telegramBackend();
+  var ready = tg ? Promise.resolve(tg) : artifactBackend();
+  ready.then(function (b) {
+    if (!b) return;
+    remote = b; storageName = b.name;
+    return b.load().then(function (str) {
+      if (str) adoptRemote(str);
+      else if (state.ts) save();               // в облаке пусто, а на устройстве есть прогресс
+      flushRemote();
+      if (!session && !test && view === "passport") render();
+    });
+  }).catch(function () {});
+}
+function todayXp() { return state.hist[dayNum()] || 0; }
+function streakNow() { var d = dayNum(); return (state.lastGoal === d || state.lastGoal === d - 1) ? state.streak : 0; }
+function addXp(n) {
+  var d = dayNum();
+  state.hist[d] = (state.hist[d] || 0) + n; state.xp += n;
+  if (state.hist[d] >= state.goal && state.lastGoal !== d) { state.streak = state.lastGoal === d - 1 ? state.streak + 1 : 1; state.lastGoal = d; return true; }
+  return false;
+}
+function known(en) { var w = state.words[en]; return !!(w && w.b >= 1); }
+function learnedCount() { return Object.keys(state.words).filter(function (k) { return state.words[k].b >= 1; }).length; }
+function dueWords() { var d = dayNum(); return Object.keys(state.words).filter(function (k) { var w = state.words[k]; return WORDS[k] && w.b >= 1 && w.d <= d; }); }
+function doneSits() { return UK.situations.filter(function (s) { return s.id in state.sit; }).length; }
+function nextSit() { for (var i = 0; i < UK.situations.length; i++) if (!(UK.situations[i].id in state.sit)) return UK.situations[i]; return null; }
 
-  fab.addEventListener("click", function () { opened ? close() : open(); });
-  closeBtn.addEventListener("click", close);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && opened) close(); });
-  bookLink.addEventListener("click", close);
-  document.addEventListener("click", function (e) {
-    if (opened && !panel.contains(e.target) && !fab.contains(e.target)) close();
+/* ================= Озвучка ================= */
+var TTS = "speechSynthesis" in window && typeof window.SpeechSynthesisUtterance === "function";
+var voice = null;
+function pickVoice() { try {
+  var vs = (speechSynthesis.getVoices() || []).filter(function (v) { return /^en[-_]/i.test(v.lang); });
+  var junk = /albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|fred|junior|ralph|kathy|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley|compact/i;
+  var good = /(daniel|serena|kate|arthur|oliver|martha|stephanie|samantha|ava|zoe|evan|nathan|karen|moira|tessa|libby|sonia|ryan|google uk english|microsoft .*online)/i;
+  function score(v) { var n = v.name || "", s = 0;
+    if (junk.test(n)) s -= 100;
+    if (/premium/i.test(n)) s += 50; if (/enhanced|neural|natural/i.test(n)) s += 40;
+    if (good.test(n)) s += 20; if (/^en[-_]GB/i.test(v.lang)) s += 10; else if (/^en[-_]US/i.test(v.lang)) s += 5;
+    if (v.localService === false) s += 3; return s; }
+  vs.sort(function (a, b) { return score(b) - score(a); });
+  voice = vs[0] || null; } catch (e) {} }
+if (TTS) { pickVoice(); try { speechSynthesis.onvoiceschanged = pickVoice; } catch (e) {} }
+function speak(text) { if (!TTS) return; try { speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(text); u.lang = voice ? voice.lang : "en-GB"; u.rate = 0.9; if (voice) u.voice = voice; speechSynthesis.speak(u); } catch (e) {} }
+
+/* ================= Вспомогательное ================= */
+function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a, n) { return shuffle(a).slice(0, n); }
+function plural(n, one, few, many) { var a = n % 10, b = n % 100; if (a === 1 && b !== 11) return one; if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few; return many; }
+var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var I = {
+  flame: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c1 3.5 5 5.6 5 10.2A5.2 5.2 0 0 1 12 22a5.2 5.2 0 0 1-5-5.3c0-2.2 1.1-3.8 2.3-5 .2 1.4.9 2.5 2 3.1C11.2 11 11 6 12 2Z"/></svg>',
+  star: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg>',
+  speaker: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+  close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg>',
+  passport: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg>',
+  check: '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>'
+};
+
+/* ================= Сцена: Лондон ================= */
+function sceneArt(sit) {
+  return '<div class="scene-wrap">' + sceneUK() + '<img class="scene-photo" src="' + sit.id + '.jpg" alt="" onerror="this.remove()"></div>';
+}
+function sceneUK() {
+  var rain = "";
+  for (var i = 0; i < 26; i++) { var x = (i * 37) % 360 + 8, y = (i * 53) % 150; rain += '<line x1="' + x + '" y1="' + y + '" x2="' + (x - 3) + '" y2="' + (y + 9) + '"/>'; }
+  var towers = "";
+  for (var t = 0; t < 7; t++) towers += '<rect x="' + (126 + t * 20) + '" y="108" width="6" height="12" fill="#6A7DB3"/>';
+  return '<svg class="scene" viewBox="0 0 360 200" role="img" aria-label="Лондон: Биг-Бен, парламент и красный автобус">' +
+    '<defs><linearGradient id="skyUK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FA6DA"/><stop offset="1" stop-color="#E4EAFA"/></linearGradient></defs>' +
+    '<rect width="360" height="200" fill="url(#skyUK)"/>' +
+    '<g class="cloud" fill="#fff" opacity=".8"><ellipse cx="40" cy="36" rx="30" ry="11"/><ellipse cx="62" cy="30" rx="20" ry="10"/></g>' +
+    '<g class="cloud c2" fill="#fff" opacity=".65"><ellipse cx="10" cy="62" rx="24" ry="8"/><ellipse cx="28" cy="57" rx="16" ry="8"/></g>' +
+    '<path d="M0 120 L0 98 L22 98 L22 88 L40 88 L40 104 L60 104 L60 92 L84 92 L84 110 L110 110 L110 120 Z" fill="#B7C5E8"/>' +
+    '<path d="M300 120 L300 96 L318 96 L318 84 L334 84 L334 100 L360 100 L360 120 Z" fill="#B7C5E8"/>' +
+    '<rect x="120" y="118" width="142" height="40" fill="#6A7DB3"/>' + towers +
+    '<g fill="#8FA0CF">' + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (k) { return '<rect x="' + (126 + k * 11) + '" y="128" width="5" height="9"/>'; }).join("") + '</g>' +
+    '<rect x="262" y="56" width="26" height="102" fill="#5A6CA3"/>' +
+    '<polygon points="260,56 275,30 290,56" fill="#4B5C92"/><line x1="275" y1="30" x2="275" y2="16" stroke="#4B5C92" stroke-width="2"/>' +
+    '<circle cx="275" cy="80" r="10" fill="#F6EBC8" stroke="#4B5C92" stroke-width="2"/>' +
+    '<line x1="275" y1="80" x2="275" y2="74" stroke="#2D365F" stroke-width="1.6"/><line class="clockhand" x1="275" y1="80" x2="281" y2="80" stroke="#2D365F" stroke-width="1.2"/>' +
+    '<rect x="0" y="158" width="360" height="14" fill="#3E4C7A"/>' +
+    '<g stroke="#FFFFFF" stroke-width="2" stroke-dasharray="10 12" opacity=".5"><line x1="0" y1="165" x2="360" y2="165"/></g>' +
+    '<rect x="0" y="172" width="360" height="28" fill="#7F97CF"/>' +
+    '<g class="wave" stroke="#C6D3F2" stroke-width="2" fill="none" opacity=".8"><path d="M0 182 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/><path d="M8 192 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/></g>' +
+    '<g class="bus"><rect x="0" y="124" width="66" height="32" rx="5" fill="#D8322D"/><rect x="0" y="139" width="66" height="2" fill="#A82420"/>' +
+      [0, 1, 2, 3, 4].map(function (k) { return '<rect x="' + (5 + k * 12) + '" y="128" width="8" height="7" rx="1.5" fill="#EAF0FF"/><rect x="' + (5 + k * 12) + '" y="144" width="8" height="7" rx="1.5" fill="#EAF0FF"/>'; }).join("") +
+      '<g class="wheel"><circle cx="14" cy="157" r="5" fill="#1E2447"/><circle cx="52" cy="157" r="5" fill="#1E2447"/></g></g>' +
+    '<g class="rain" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round" opacity="0">' + rain + "</g>" +
+    "</svg>";
+}
+
+/* ================= Экраны ================= */
+var app = document.getElementById("app"), overlay = document.getElementById("overlay");
+var view = state.onboarded ? "map" : "ob";
+var obStep = 0, session = null, result = null, dialog = null, test = null;
+
+function render() {
+  var h;
+  if (session) h = renderSession();
+  else if (result) h = renderResult();
+  else if (test) h = test.done ? renderTestResult() : renderTest();
+  else if (view === "ob") h = renderOnboarding();
+  else if (view === "passport") h = renderPassport() + renderNav();
+  else h = renderMap() + renderNav();
+  app.innerHTML = '<div class="screen">' + h + "</div>";
+  renderOverlay();
+  syncBack();
+}
+function renderNav() {
+  return '<nav class="nav" aria-label="Разделы"><div>' +
+    '<button data-a="tab" data-v="map"' + (view === "map" ? ' aria-current="page"' : "") + ">" + I.map + "Маршрут</button>" +
+    '<button data-a="tab" data-v="passport"' + (view === "passport" ? ' aria-current="page"' : "") + ">" + I.passport + "Паспорт</button></div></nav>";
+}
+function topBar(pct, right) {
+  return '<div class="lesson-top"><button class="x" data-a="quit" aria-label="Закрыть">' + I.close + '</button><div class="bar" role="progressbar" aria-valuenow="' + pct +
+    '" aria-valuemin="0" aria-valuemax="100"><i style="width:' + pct + '%"></i></div><span class="combo">' + (right || "") + "</span></div>";
+}
+
+/* ---------- знакомство ---------- */
+function renderOnboarding() {
+  var dots = '<div class="dots" aria-hidden="true">' + [0, 1, 2].map(function (i) { return '<i class="' + (i === obStep ? "on" : "") + '"></i>'; }).join("") + "</div>";
+  if (obStep === 0) {
+    return '<div class="ob"><div class="grow">' + sceneUK() +
+      '<div class="flags" aria-hidden="true">' + C.countries.map(function (c) { return "<span>" + c.flag + "</span>"; }).join("") + "</div>" +
+      "<h1>Кругосветка по английскому</h1>" +
+      '<p class="lead">Вспомните школьный английский и объясняйтесь в кафе, аэропорту, отеле и на работе. 10 минут в день.</p>' +
+      '<div class="facts"><div><b>60</b><span>дней</span></div><div><b>60</b><span>ситуаций</span></div><div><b>500</b><span>слов</span></div></div>' +
+      "</div>" + dots + '<button class="btn" data-a="ob-next">Отправиться</button></div>';
+  }
+  if (obStep === 1) {
+    var goals = [[20, "Легко", "около 5 минут в день"], [50, "Нормально", "около 10 минут в день"], [100, "Серьёзно", "около 20 минут в день"]];
+    return '<div class="ob"><div class="grow"><h1>Сколько времени в дороге каждый день?</h1><p class="lead">Цель дня считается в очках за верные ответы. Выполняйте её каждый день, и будет расти серия.</p><div class="choices">' +
+      goals.map(function (g) { return '<button class="choice" data-a="ob-goal" data-v="' + g[0] + '" aria-pressed="' + (state.goal === g[0]) + '"><span class="badge">' + g[0] + "</span><span><b>" + g[1] + "</b><span>" + g[2] + "</span></span></button>"; }).join("") +
+      "</div></div>" + dots + '<button class="btn" data-a="ob-next">Дальше</button></div>';
+  }
+  return '<div class="ob"><div class="grow"><h1>Проверим, что вы уже знаете</h1><p class="lead">20 слов, около 2 минут. Слова, которые вы помните со школы, мы не будем учить заново.</p>' +
+    '<div class="plan"><div><i>1</i>Видите слово и отвечаете, знаете ли его</div><div><i>2</i>Если знаете — выбираете перевод</div><div><i>3</i>Получаете свой уровень и старт маршрута</div></div></div>' +
+    dots + '<div class="stack"><button class="btn" data-a="test-start">Пройти тест</button><button class="btn quiet" data-a="test-skip">Начать с нуля</button></div></div>';
+}
+
+/* ---------- тест уровня ---------- */
+function startTest() { test = { i: 0, knownEn: [], phase: "ask", options: null, picked: null, done: false }; render(); }
+function renderTest() {
+  var item = C.placement[test.i];
+  var pct = Math.round(test.i / C.placement.length * 100);
+  var h = topBar(pct, (test.i + 1) + "/" + C.placement.length) + '<div class="test-word">' + esc(item[0]) + "</div>";
+  if (test.phase === "ask") {
+    h += '<p class="test-q">Знаете это слово?</p><div class="two"><button class="btn quiet" data-a="t-no">Не знаю</button><button class="btn" data-a="t-yes">Знаю</button></div>';
+  } else {
+    h += '<p class="test-q">Выберите перевод</p><div class="options">' + test.options.map(function (o, i) {
+      var cls = "opt";
+      if (test.picked !== null) { if (o === item[1]) cls += " right"; else if (i === test.picked) cls += " wrong"; }
+      return '<button class="' + cls + '" data-a="t-pick" data-v="' + i + '"' + (test.picked !== null ? " disabled" : "") + ">" + esc(o) + "</button>";
+    }).join("") + "</div>";
+  }
+  return h;
+}
+function testNext() {
+  test.i++; test.phase = "ask"; test.options = null; test.picked = null;
+  if (test.i >= C.placement.length) finishTest(); else render();
+}
+function finishTest() {
+  var k = test.knownEn.length, d = dayNum();
+  test.knownEn.forEach(function (en) { if (WORDS[en]) state.words[en] = { b: 2, d: d + INTERVALS[2] }; });
+  var label = k <= 6 ? "Начинаем с основ" : k <= 13 ? "Школьная база есть" : "Уверенная база";
+  state.placed = { k: k, label: label };
+  state.onboarded = true; save();
+  test.done = true; render();
+}
+function renderTestResult() {
+  var p = state.placed;
+  var lead = p.k <= 6 ? "Хорошее начало. Пройдём маршрут с самых нужных слов и фраз." :
+    p.k <= 13 ? "Основа со школы на месте. Знакомые слова уже отмечены, в уроках на них не придётся тратить время." :
+    "Вы знаете много слов. Первая страна пройдёт быстро, самое интересное начнётся дальше по маршруту.";
+  return '<div class="result"><div style="font-size:60px;line-height:1" aria-hidden="true">🧳</div><h1>' + esc(p.label) + '</h1><p class="lead">' + lead + "</p>" +
+    '<div class="stats"><div class="stat blue"><b>' + p.k + '</b><span>из 20 слов знаете</span></div><div class="stat mint"><b>' + learnedCount() + "</b><span>" + plural(learnedCount(), "слово", "слова", "слов") + ' маршрута отмечено</span></div><div class="stat gold"><b>🇬🇧</b><span>первая страна</span></div></div>' +
+    '<button class="btn" data-a="test-done">К маршруту</button></div>';
+}
+
+/* ---------- карта маршрута ---------- */
+function ringSvg(v, max) {
+  var r = 19, c = 2 * Math.PI * r, p = Math.min(1, v / max);
+  return '<svg class="ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="track" cx="24" cy="24" r="' + r + '"/><circle class="val" cx="24" cy="24" r="' + r + '" stroke-dasharray="' + c.toFixed(1) + '" stroke-dashoffset="' + (c * (1 - p)).toFixed(1) + '"/></svg>';
+}
+function renderMap() {
+  var name = userName(), s = streakNow(), tx = todayXp(), n = doneSits(), next = nextSit(), due = dueWords();
+  var h = '<header class="top"><div class="hello">' + (name ? "Привет, " + esc(name) + "!" : "Привет!") + "</div>" +
+    '<span class="chip' + (s ? "" : " off") + '" style="color:' + (s ? "var(--red)" : "") + '" title="Дней подряд">' + I.flame + s + '</span><span class="chip" style="color:var(--gold)" title="Очки">' + I.star + state.xp + "</span></header>";
+  h += '<div class="goal">' + ringSvg(tx, state.goal) + "<div><b>" + (tx >= state.goal ? "Цель дня выполнена" : "Цель дня: " + tx + " из " + state.goal) + "</b><span>" +
+    (tx >= state.goal ? "Серия продлена, можно продолжать" : "Осталось " + (state.goal - tx) + " " + plural(state.goal - tx, "очко", "очка", "очков")) + "</span></div></div>";
+  h += '<article class="airmail country"><div class="inner">' + sceneUK() + '<div class="cap"><b>' + UK.flag + " " + UK.name + "</b><span>" + UK.city + '</span></div><div class="sub">' + UK.theme + ". Пройдено " + n + " из 10 ситуаций</div>" +
+    '<div class="progress-line"><i style="width:' + (n * 10) + '%"></i></div>' +
+    (next ? '<button class="btn" data-a="sit" data-v="' + next.id + '">Ситуация ' + (next.index + 1) + ": " + esc(next.title) + "</button>"
+          : state.visas.uk ? '<button class="btn quiet" disabled>Виза получена, следующая страна скоро</button>'
+          : '<button class="btn gold" data-a="customs">Пройти таможню</button>') + "</div></article>";
+  if (due.length) h += '<button class="review" data-a="review"><span>Повторить слова<small>Пора освежить, пока не забылись</small></span><span class="n">' + Math.min(due.length, 12) + "</span></button>";
+  h += '<h3 class="section-t">Маршрут по Великобритании</h3><div class="route">';
+  UK.situations.forEach(function (st) {
+    var done = st.id in state.sit, cur = next && next.id === st.id;
+    h += '<button class="stop' + (done ? " done" : "") + (cur ? " current" : "") + '" data-a="sit" data-v="' + st.id + '"><span class="dot">' + (done ? I.check : st.index + 1) + "</span><span><b>" + esc(st.title) +
+      "</b><small>" + (done ? "Пройдено, точность " + state.sit[st.id].best + "%" : cur ? "Следующая остановка" : "8 слов, 3 фразы, диалог") + "</small></span></button>";
   });
+  var allDone = n === 10;
+  h += '<button class="stop customs' + (allDone ? "" : " locked") + '" data-a="customs"' + (allDone ? "" : " disabled") + '><span class="dot">' + (state.visas.uk ? "✓" : "🛂") + "</span><span><b>Таможня</b><small>" +
+    (state.visas.uk ? "Виза в паспорте" : allDone ? "Проверка страны: 15 заданий" : "Откроется после 10 ситуаций") + "</small></span></button></div>";
+  h += '<h3 class="section-t">Дальше по маршруту</h3><div class="next-countries">' + C.countries.slice(1).map(function (c) {
+    return '<div class="nc"><span class="flag" aria-hidden="true">' + c.flag + "</span><div><b>" + c.name + "</b><span>" + c.theme + '</span></div><span class="soon">скоро</span></div>';
+  }).join("") + "</div>";
+  return h;
+}
 
-  renderQuick();
-})();
-</script>
-<script>
-(function () {
-  var intro = document.getElementById("intro");
-  if (!intro) return;
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) { intro.remove(); return; }
+/* ---------- паспорт ---------- */
+function visaHtml(c, have, rot) {
+  var col = VISA_COLORS[c.id];
+  return '<div class="visa' + (have ? "" : " empty") + '" style="--vc:' + (have ? col : "") + ";--r:" + rot + 'deg"><div class="flag">' + c.flag + "</div><b>" + c.name + "</b><small>" +
+    (have ? "ВИЗА ВЫДАНА" : c.id === "uk" ? "после таможни" : "скоро") + "</small></div>";
+}
+function renderPassport() {
+  var h = '<header class="top"><div class="hello">Паспорт путешественника</div></header>';
+  h += '<div class="kv"><div class="stat blue"><b>' + learnedCount() + "</b><span>из " + TOTAL_WORDS + ' слов</span></div><div class="stat red"><b>' + streakNow() + '</b><span>дней подряд</span></div><div class="stat gold"><b>' + doneSits() +
+    "</b><span>из " + TOTAL_SITS + " ситуаций</span></div></div>";
+  h += '<h3 class="section-t">Визы</h3><div class="visas">' + C.countries.map(function (c, i) { return visaHtml(c, !!state.visas[c.id], [-6, 4, -3, 5, -5, 3][i]); }).join("") + "</div>";
+  h += '<h3 class="section-t">Настройки</h3><div class="settings"><div class="row-t">Цель дня, очков</div><div class="seg">' +
+    [20, 50, 100].map(function (g) { return '<button data-a="set-goal" data-v="' + g + '" aria-pressed="' + (state.goal === g) + '">' + g + "</button>"; }).join("") +
+    '</div><button class="btn quiet" data-a="retest" style="margin-top:10px">Пройти тест уровня заново</button><button class="link" data-a="reset">Сбросить весь прогресс</button></div>' +
+    '<p class="foot">Прогресс сохраняется: ' + esc(storageName) + '.<br>Прототип: открыта Великобритания, 10 ситуаций и 80 слов.' + (state.placed ? "<br>Ваш уровень по тесту: " + esc(state.placed.label.toLowerCase()) : "") + "</p>";
+  return h;
+}
 
-  var root = document.documentElement;
-  root.style.overflow = "hidden";
+/* ================= Ситуация ================= */
+function startSit(id) {
+  var s = sitById(id);
+  var learn = s.words.filter(function (w) { return !known(w.en); });
+  session = { kind: "sit", sit: s, phase: "scene", learn: learn, knownWords: s.words.filter(function (w) { return known(w.en); }), idx: 0, flipped: false, dstep: 0, dlog: [], dwrong: false };
+  haptic(); render(); window.scrollTo(0, 0);
+}
+function startCustoms() {
+  var d = dayNum();
+  if (state.customsTry.uk === d && !state.visas.uk) { dialog = { kind: "info", title: "Таможня откроется завтра", text: "Сегодня попытка уже была. Повторите слова, и завтра попробуйте снова." }; renderOverlay(); return; }
+  var words = pick(ALL_WORDS, 10), phrases = pick(Object.keys(PHRASES).map(function (k) { return PHRASES[k]; }), 5);
+  session = { kind: "customs", phase: "scene", words: words };
+  session.items = shuffle(buildItems(words, false).concat(phrases.map(function (p) { return prep({ p: p, type: "order" }); })));
+  resetQuiz(); haptic(); render();
+}
+function startReview() {
+  var due = pick(dueWords(), 12).map(function (k) { return WORDS[k]; });
+  if (!due.length) return;
+  session = { kind: "review", phase: "quiz", words: due, items: buildItems(due, false) };
+  resetQuiz(); haptic(); render(); autoSpeak();
+}
+function resetQuiz() { Object.assign(session, { i: 0, correct: 0, answered: 0, xp: 0, combo: 0, best: 0, wrong: {}, retried: {} }); }
 
-  var wrench = document.getElementById("wrench");
-  var nut = document.getElementById("nut");
-  var ring = document.getElementById("ring");
-  var lash = document.getElementById("lash");
-  var reading = document.getElementById("reading");
-  var brand = document.getElementById("introBrand");
-
-  // Тайминг в миллисекундах: три хода трещотки, щелчок, название, уход вверх
-  var START = 250, F = 280, B = 180, STEP = F + B;
-  var END = START + 2 * STEP + F;   // конец последнего хода (1450)
-  var HOLD = 2500;                   // когда начинаем уходить
-
-  var done = false;
-  var t0 = 0;
-
-  function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
-
-  // Ключ качается вперёд на 40 градусов и возвращается, гайка идёт только вперёд
-  function state(t) {
-    if (t <= START) return { w: 20, n: 0 };
-    for (var i = 0; i < 3; i++) {
-      var a = START + i * STEP, f = a + F, b = f + B;
-      if (t < a) break;
-      if (t <= f) { var p = ease((t - a) / F); return { w: 20 + 40 * p, n: 40 * i + 40 * p }; }
-      if (i < 2 && t <= b) { var q = ease((t - f) / B); return { w: 60 - 40 * q, n: 40 * (i + 1) }; }
-    }
-    return { w: 60, n: 120 };
+function sitSteps() {
+  var st = ["scene"];
+  if (session.knownWords.length) st.push("known");
+  if (session.learn.length) st.push("learn");
+  st.push("phrases", "dialog", "quiz");
+  return st;
+}
+function goNextPhase() {
+  var st = sitSteps(), i = st.indexOf(session.phase);
+  session.phase = st[i + 1];
+  if (session.phase === "quiz") {
+    session.items = shuffle(buildItems(session.sit.words, false).concat(session.sit.phrases.map(function (p) { return prep({ p: p, type: "order" }); })));
+    spreadSame(session.items);
+    resetQuiz();
   }
+  if (session.phase === "learn") { session.idx = 0; session.flipped = false; speak(session.learn[0].en); }
+  render(); window.scrollTo(0, 0); autoSpeak();
+}
+function phasePct() {
+  var st = sitSteps(), i = st.indexOf(session.phase);
+  if (session.phase === "quiz") return Math.round((st.length - 1) / st.length * 100 * 0 + 60 + session.i / session.items.length * 40);
+  if (session.phase === "learn") return Math.round(i / st.length * 60 + session.idx / session.learn.length * (60 / st.length));
+  return Math.round(i / st.length * 60);
+}
 
-  function leave() {
-    if (done) return;
-    done = true;
-    intro.classList.add("leave");
-    setTimeout(function () { intro.remove(); root.style.overflow = ""; }, 480);
+function renderSession() {
+  var s = session;
+  if (s.kind === "customs" && s.phase === "scene") {
+    return topBar(0) + '<div class="scene-intro"><div style="font-size:64px;text-align:center" aria-hidden="true">🛂</div><h2>Таможня Великобритании</h2><p>15 заданий по словам и фразам страны. Чтобы получить визу, нужно ответить верно хотя бы на 12. Ошибки здесь не возвращаются, как на настоящем экзамене.</p></div><button class="btn gold" data-a="customs-go">Начать проверку</button>';
   }
-
-  function frame(now) {
-    if (done) return;
-    var t = now - t0;
-    var s = state(t);
-    var scale = 1;
-
-    if (t >= END && t <= END + 400) {
-      var p = (t - END) / 400;
-      scale = 1 + 0.07 * Math.sin(Math.PI * p);
-      ring.setAttribute("r", (30 + 50 * p).toFixed(1));
-      ring.setAttribute("opacity", (1 - p).toFixed(2));
-    } else if (t > END + 400) {
-      ring.setAttribute("opacity", "0");
+  if (s.phase === "quiz") return renderQuiz();
+  var sit = s.sit, h = topBar(phasePct(), (sit.index + 1) + "/10");
+  if (s.phase === "scene") {
+    h += '<div class="scene-intro">' + sceneArt(sit) + "<h2>" + esc(sit.title) + "</h2><p>" + esc(sit.scene) + "</p>" +
+      '<div class="plan">' + (s.learn.length ? "<div><i>1</i>" + s.learn.length + " " + plural(s.learn.length, "новое слово", "новых слова", "новых слов") + "</div>" : "<div><i>1</i>Все слова этой ситуации вы уже знаете</div>") +
+      "<div><i>2</i>3 фразы на каждый день</div><div><i>3</i>Разговор: " + esc(sit.npc) + "</div><div><i>4</i>Задания на закрепление</div></div></div>" +
+      '<button class="btn" data-a="next-phase">Поехали</button>';
+  } else if (s.phase === "known") {
+    h += '<p class="step-t">Эти слова вы уже знаете, повторять не будем</p><div class="known-list">' + s.knownWords.map(function (w) { return "<span>" + esc(w.en) + "</span>"; }).join("") + "</div>" +
+      '<button class="btn" data-a="next-phase">' + (s.learn.length ? "К новым словам" : "К фразам") + "</button>";
+  } else if (s.phase === "learn") {
+    var w = s.learn[s.idx];
+    h += '<p class="step-t">Новое слово ' + (s.idx + 1) + " из " + s.learn.length + "</p>" +
+      '<div class="card3d' + (s.flipped ? " is-flipped" : "") + '" data-a="flip" role="button" tabindex="0" aria-label="Перевернуть открытку">' +
+        '<div class="face front airmail"><div class="inner"><span class="postmark" aria-hidden="true">' + UK.flag + "</span>" +
+          (TTS ? '<button class="speak corner" data-a="speak" data-v="' + esc(w.en) + '" aria-label="Послушать слово">' + I.speaker + "</button>" : "") +
+          '<div class="word">' + esc(w.en) + '</div><div class="ipa">/' + esc(w.ipa) + '/</div><div class="flip-hint">Нажмите, чтобы увидеть перевод</div></div></div>' +
+        '<div class="face back airmail"><div class="inner">' + (TTS ? '<button class="speak corner" data-a="speak" data-v="' + esc(w.ex) + '" aria-label="Послушать пример">' + I.speaker + "</button>" : "") +
+          '<div class="ru">' + esc(w.ru) + '</div><p class="ex">' + esc(w.ex) + '</p><p class="exru">' + esc(w.exRu) + "</p></div></div></div>" +
+      '<button class="btn" data-a="learn-next">' + (s.idx + 1 < s.learn.length ? "Следующее слово" : "К фразам") + "</button>";
+  } else if (s.phase === "phrases") {
+    h += '<p class="step-t">Три фразы для этой ситуации</p><div class="phrases">' + sit.phrases.map(function (p) {
+      return '<div class="phrase">' + (TTS ? '<button class="speak small" data-a="speak" data-v="' + esc(p.en) + '" aria-label="Послушать фразу">' + I.speaker + "</button>" : "") + "<div><b>" + esc(p.en) + "</b><span>" + esc(p.ru) + "</span></div></div>";
+    }).join("") + '</div><button class="btn" data-a="next-phase">К разговору</button>';
+  } else if (s.phase === "dialog") {
+    h += '<p class="step-t">Разговор. Выберите подходящий ответ</p><div class="chat">';
+    for (var k = 0; k <= Math.min(s.dstep, sit.dialog.length - 1); k++) {
+      var line = sit.dialog[k];
+      h += '<div class="bubble them"><div class="who">' + esc(sit.npc) + '</div><div class="en">' + esc(line.say) + '</div><div class="tr">' + esc(line.ru) + "</div></div>";
+      if (s.dlog[k]) h += '<div class="bubble me"><div class="en">' + esc(s.dlog[k]) + "</div></div>";
     }
-
-    wrench.setAttribute("transform", "rotate(" + s.w.toFixed(2) + ")");
-    nut.setAttribute("transform", "rotate(" + s.n.toFixed(2) + ") scale(" + scale.toFixed(3) + ")");
-
-    var v = Math.max(0, 2 * (1 - s.n / 120));
-    lash.textContent = v.toFixed(1).replace(".", ",");
-    if (t >= END) reading.classList.add("zero");
-
-    if (t >= END + 50) {
-      var k = Math.min(1, (t - END - 50) / 400);
-      brand.style.opacity = k;
-      brand.style.transform = "translateY(" + (10 * (1 - k)).toFixed(1) + "px)";
+    h += "</div>";
+    if (s.dstep < sit.dialog.length) {
+      var cur = sit.dialog[s.dstep];
+      if (!s.dopts) s.dopts = shuffle(cur.options);
+      if (s.dwrong) h += '<p class="hint">Не подходит по смыслу. Прочитайте реплику ещё раз.</p>';
+      h += '<div class="options">' + s.dopts.map(function (o, i) { return '<button class="opt en' + (s.dwrongIdx === i ? " wrong" : "") + '" data-a="d-pick" data-v="' + i + '">' + esc(o) + "</button>"; }).join("") + "</div>";
+    } else {
+      h += '<button class="btn mint" data-a="next-phase">Отлично! К заданиям</button>';
     }
-
-    if (t >= HOLD) { leave(); return; }
-    requestAnimationFrame(frame);
   }
+  return h;
+}
 
-  intro.addEventListener("click", leave);
-  document.addEventListener("keydown", leave, { once: true });
-  setTimeout(leave, 6000); // страховка
+/* ---------- задания ---------- */
+var TYPES = ["choose_ru", "choose_en", "listen", "gap", "spell"];
+function buildItems(words) {
+  var types = TYPES.filter(function (t) { return TTS || t !== "listen"; });
+  var off = Math.floor(Math.random() * types.length);
+  return words.map(function (w, i) { return prep({ w: w, type: types[(i + off) % types.length] }); });
+}
+function spreadSame(items) {
+  for (var k = 1; k < items.length; k++) {
+    var a = items[k].w || items[k].p, b = items[k - 1].w || items[k - 1].p;
+    if (a === b) for (var m = k + 1; m < items.length; m++) { var c = items[m].w || items[m].p; if (c !== b) { var t = items[k]; items[k] = items[m]; items[m] = t; break; } }
+  }
+}
+function distract(w, field, n) {
+  var seen = {}, out = [];
+  shuffle(ALL_WORDS).forEach(function (x) { if (out.length < n && x.en !== w.en && x[field] !== w[field] && !seen[x[field]]) { seen[x[field]] = 1; out.push(x[field]); } });
+  return out;
+}
+function prep(it) {
+  it.answered = null;
+  if (it.type === "order") {
+    var toks = it.p.en.split(" "), sh = shuffle(toks), n = 0;
+    while (sh.join(" ") === it.p.en && n++ < 10 && toks.length > 1) sh = shuffle(toks);
+    it.tokens = sh; it.picked = [];
+    return it;
+  }
+  var w = it.w;
+  if (it.type === "choose_ru") it.options = shuffle([w.ru].concat(distract(w, "ru", 3)));
+  else if (it.type !== "spell") it.options = shuffle([w.en].concat(distract(w, "en", 3)));
+  if (it.type === "gap") it.sentence = w.ex.replace(new RegExp("\\b" + w.en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), "\u0000");
+  if (it.type === "spell") {
+    var letters = w.en.split(""), tl = shuffle(letters), tr = 0;
+    while (tl.join("") === w.en && tr++ < 10 && letters.length > 1) tl = shuffle(letters);
+    it.tiles = tl; it.picked = [];
+  }
+  return it;
+}
+function renderQuiz() {
+  var s = session, q = s.items[s.i], pct = s.kind === "sit" ? phasePct() : Math.round(s.i / s.items.length * 100);
+  var h = topBar(pct, s.combo >= 3 ? "×" + s.combo : (s.kind === "customs" ? (s.i + 1) + "/" + s.items.length : "")) + '<div class="stage">';
+  var answered = q.answered !== null;
+  function opts(isEn, correct) {
+    return '<div class="options">' + q.options.map(function (o, i) {
+      var cls = "opt" + (isEn ? " en" : "");
+      if (answered) { if (o === correct) cls += " right"; else if (i === q.answered) cls += " wrong"; }
+      return '<button class="' + cls + '" data-a="opt" data-v="' + i + '"' + (answered ? " disabled" : "") + ">" + esc(o) + "</button>";
+    }).join("") + "</div>";
+  }
+  if (q.type === "order") {
+    var p = q.p, cls = "built" + (answered ? (q.answered ? " right" : " wrong") : "");
+    h += '<p class="step-t">Соберите фразу</p><div class="q-ru" style="font-size:24px">' + esc(p.ru) + '</div><div class="' + cls + '">' +
+      q.picked.map(function (ti, k) { return '<button class="tile w" data-a="o-slot" data-v="' + k + '"' + (answered ? " disabled" : "") + ">" + esc(q.tokens[ti]) + "</button>"; }).join("") +
+      '</div><div class="tiles">' + q.tokens.map(function (t, i) { var used = q.picked.indexOf(i) >= 0; return '<button class="tile w' + (used ? " used" : "") + '" data-a="o-tile" data-v="' + i + '"' + (used || answered ? " disabled" : "") + ">" + esc(t) + "</button>"; }).join("") + "</div>";
+  } else {
+    var w = q.w;
+    if (q.type === "choose_ru") {
+      h += '<p class="step-t">Выберите перевод</p><div class="q-word">' + esc(w.en) + '</div><div class="q-sub">/' + esc(w.ipa) + "/</div>" + opts(false, w.ru);
+    } else if (q.type === "choose_en") {
+      h += '<p class="step-t">Как это по-английски?</p><div class="q-ru">' + esc(w.ru) + '</div><div class="q-sub"></div>' + opts(true, w.en);
+    } else if (q.type === "listen") {
+      h += '<p class="step-t">Что вы услышали?</p><button class="speak big" data-a="speak" data-v="' + esc(w.en) + '" aria-label="Послушать ещё раз">' + I.speaker + "</button>" + opts(true, w.en);
+    } else if (q.type === "gap") {
+      var parts = q.sentence.split("\u0000");
+      h += '<p class="step-t">Вставьте пропущенное слово</p><div class="q-sentence">' + esc(parts[0]) + '<span class="gap">' + (answered ? esc(q.options[q.answered]) : "&nbsp;") + "</span>" + esc(parts[1] || "") +
+        '</div><div class="q-sub">' + esc(w.exRu) + "</div>" + opts(true, w.en);
+    } else if (q.type === "spell") {
+      var sc = "slots" + (answered ? (q.answered ? " right" : " wrong") : "");
+      h += '<p class="step-t">Соберите слово из букв</p><div class="q-ru">' + esc(w.ru) + '</div><div class="q-sub"></div><div class="' + sc + '">' +
+        w.en.split("").map(function (_, i) { var t = q.picked[i]; return '<button class="slot' + (t != null ? " filled" : "") + '" data-a="slot" data-v="' + i + '"' + (answered || t == null ? " disabled" : "") + ">" + (t != null ? esc(q.tiles[t]) : "") + "</button>"; }).join("") +
+        '</div><div class="tiles">' + q.tiles.map(function (ch, i) { var used = q.picked.indexOf(i) >= 0; return '<button class="tile' + (used ? " used" : "") + '" data-a="tile" data-v="' + i + '"' + (used || answered ? " disabled" : "") + ">" + esc(ch) + "</button>"; }).join("") + "</div>";
+    }
+  }
+  return h + "</div>";
+}
+function autoSpeak() { var q = session && session.items && session.phase === "quiz" && session.items[session.i]; if (q && q.type === "listen") setTimeout(function () { speak(q.w.en); }, 250); }
+function answer(ok, chosen) {
+  var s = session, q = s.items[s.i];
+  if (q.answered !== null) return;
+  q.answered = chosen; s.answered++;
+  var key = q.w ? q.w.en : q.p.id;
+  if (ok) {
+    s.correct++; s.combo++; s.best = Math.max(s.best, s.combo);
+    var gain = 10 + (s.combo >= 3 ? 5 : 0); s.xp += gain; haptic("ok");
+    dialog = { kind: "fb", ok: true, gain: gain, q: q };
+  } else {
+    s.combo = 0; s.wrong[key] = 1; haptic("bad");
+    if (s.kind !== "customs" && !s.retried[key]) {
+      s.retried[key] = 1;
+      if (q.w) { var other = TYPES.filter(function (t) { return t !== q.type && t !== "spell" && (TTS || t !== "listen"); }); s.items.push(prep({ w: q.w, type: other[Math.floor(Math.random() * other.length)] })); }
+      else s.items.push(prep({ p: q.p, type: "order" }));
+    }
+    dialog = { kind: "fb", ok: false, q: q };
+  }
+  var say = q.w ? q.w.en : q.p.en;
+  if (!ok || q.type !== "listen") speak(say);
+  render();
+}
+function nextItem() {
+  dialog = null; session.i++;
+  if (session.i >= session.items.length) return finish();
+  render(); autoSpeak();
+}
+function finish() {
+  var s = session, d = dayNum();
+  var acc = s.answered ? Math.round(s.correct / s.answered * 100) : 0;
+  var words = s.kind === "sit" ? s.sit.words : s.words;
+  words.forEach(function (w) {
+    var p = state.words[w.en] || { b: 0, d: d };
+    p.b = s.wrong[w.en] ? 1 : Math.min(p.b + 1, INTERVALS.length - 1);
+    p.d = d + INTERVALS[p.b];
+    state.words[w.en] = p;
+  });
+  var bonus = s.kind === "sit" ? 20 : s.kind === "customs" ? 30 : 10;
+  var xp = s.xp + bonus, goalNow = addXp(xp), extra = {};
+  if (s.kind === "sit") { var prev = state.sit[s.sit.id]; extra.first = !prev; state.sit[s.sit.id] = { best: Math.max(prev ? prev.best : 0, acc) }; }
+  if (s.kind === "customs") {
+    extra.passed = s.correct >= 12;
+    if (extra.passed) state.visas.uk = d; else state.customsTry.uk = d;
+    extra.correct = s.correct; extra.total = s.items.length;
+  }
+  save();
+  result = { kind: s.kind, sit: s.sit, xp: xp, acc: acc, best: s.best, goalNow: goalNow, extra: extra, n: words.length };
+  session = null; dialog = null; render(); window.scrollTo(0, 0);
+  haptic(result.kind === "customs" && !extra.passed ? "bad" : "ok"); countUp();
+  if (!REDUCED && !(result.kind === "customs" && !extra.passed)) confetti();
+}
 
-  requestAnimationFrame(function (now) { t0 = now; frame(now); });
+/* ---------- итоги ---------- */
+function stampHtml(sit) {
+  return '<div class="stamp" style="--r:-5deg"><div class="face" style="background:' + SIT_COLORS[sit.index] + '"><span class="glyph">' + UK.flag + '</span><span class="name">' + esc(sit.title) + "</span></div></div>";
+}
+function renderResult() {
+  var r = result, h = '<div class="result">';
+  if (r.kind === "customs") {
+    if (r.extra.passed) {
+      h += "<h1>Виза получена!</h1><p class=\"lead\">" + r.extra.correct + " из " + r.extra.total + " верно. Великобритания пройдена, её виза теперь в вашем паспорте.</p>" +
+        '<div class="slam">' + visaHtml(UK, true, -6) + "</div>";
+    } else {
+      h += '<div style="font-size:60px;line-height:1" aria-hidden="true">🛂</div><h1>Почти получилось</h1><p class="lead">' + r.extra.correct + " из " + r.extra.total + " верно, а нужно 12. Повторите слова, и завтра таможня откроется снова.</p>";
+    }
+  } else {
+    h += '<div style="font-size:60px;line-height:1" aria-hidden="true">' + (r.acc >= 90 ? "🏆" : r.acc >= 60 ? "📬" : "💪") + "</div><h1>" + (r.kind === "sit" ? "Ситуация пройдена!" : "Повторение готово") + '</h1><p class="lead">' +
+      (r.kind === "sit" ? esc(r.sit.title) + ". " : r.n + " " + plural(r.n, "слово", "слова", "слов") + ". ") +
+      (r.acc >= 90 ? "Отличная работа." : "Слова с ошибками вернутся завтра на повторение.") + "</p>";
+  }
+  h += '<div class="stats"><div class="stat gold"><b data-count="' + r.xp + '">0</b><span>очков</span></div><div class="stat mint"><b>' + r.acc + '%</b><span>точность</span></div><div class="stat blue"><b>' + r.best + "</b><span>верных подряд</span></div></div>";
+  if (r.goalNow) h += '<div class="goal-done"><span aria-hidden="true">🔥</span><div>Цель дня выполнена<br><small style="font-weight:500">Дней подряд: ' + streakNow() + "</small></div></div>";
+  if (r.kind === "sit" && r.extra.first) h += '<h3 class="section-t">Новая марка</h3><div class="slam">' + stampHtml(r.sit) + "</div>";
+  return h + '<button class="btn" data-a="done">Продолжить</button></div>';
+}
+function countUp() {
+  var el = app.querySelector("[data-count]"); if (!el) return;
+  var target = +el.getAttribute("data-count"); if (REDUCED) { el.textContent = target; return; }
+  var t0 = performance.now();
+  (function step(t) { var k = Math.min(1, (t - t0) / 900); el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); })(t0);
+}
+function confetti() {
+  var cv = document.createElement("canvas"); cv.id = "confetti"; document.body.appendChild(cv);
+  var dpr = window.devicePixelRatio || 1; cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+  var ctx = cv.getContext("2d"); ctx.scale(dpr, dpr);
+  var colors = ["#E0413A", "#2446C8", "#F2B33D", "#139A63", "#FFFFFF"], ps = [];
+  for (var i = 0; i < 140; i++) ps.push({ x: innerWidth / 2 + (Math.random() - 0.5) * 60, y: innerHeight * 0.35, vx: (Math.random() - 0.5) * 12, vy: -Math.random() * 13 - 4, r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.4, w: 6 + Math.random() * 6, h: 8 + Math.random() * 8, c: colors[i % colors.length] });
+  var t0 = performance.now();
+  (function frame(t) {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    ps.forEach(function (p) { p.vy += 0.35; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.r += p.vr; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.r * 2))); ctx.restore(); });
+    if (t - t0 < 2600 && cv.isConnected) requestAnimationFrame(frame); else cv.remove();
+  })(t0);
+}
+
+/* ---------- всплывающие листы ---------- */
+function renderOverlay() {
+  if (!dialog) { overlay.innerHTML = ""; return; }
+  if (dialog.kind === "fb") {
+    var q = dialog.q, en = q.w ? q.w.en : q.p.en, ru = q.w ? q.w.ru : q.p.ru;
+    var tail = session && session.kind === "customs" ? "" : "<br><small>Это вернётся в конце, чтобы закрепить.</small>";
+    overlay.innerHTML = dialog.ok
+      ? '<div class="sheet ok" role="status"><div><h3>' + I.check + "Верно! +" + dialog.gain + '</h3><p><span class="ans">' + esc(en) + "</span> — " + esc(ru) + '</p><button class="btn mint" data-a="continue">Продолжить</button></div></div>'
+      : '<div class="sheet bad" role="status"><div><h3>Не совсем</h3><p>Правильно: <span class="ans">' + esc(en) + "</span> — " + esc(ru) + tail + '</p><button class="btn err" data-a="continue">Понятно</button></div></div>';
+    var b = overlay.querySelector("[data-a=continue]"); if (b) b.focus({ preventScroll: true });
+    return;
+  }
+  var map = {
+    quit: ["Выйти?", session && session.kind === "customs" ? "Проверка не засчитается, попробовать снова можно будет сразу." : "Прогресс этой ситуации не сохранится.", "Выйти", "quit-yes", "Продолжить", "dlg-close"],
+    reset: ["Сбросить весь прогресс?", "Выученные слова, очки, серия, марки и визы будут удалены. Отменить это нельзя.", "Сбросить", "reset-yes", "Отмена", "dlg-close"],
+    info: [dialog.title, dialog.text, "Понятно", "dlg-close", null, null]
+  }[dialog.kind];
+  overlay.innerHTML = '<div class="scrim" data-a="dlg-close"><div class="dialog" role="dialog" aria-modal="true" aria-label="' + esc(map[0]) + '"><div><h3>' + esc(map[0]) + "</h3><p>" + esc(map[1]) + '</p><button class="btn' + (map[3] === "dlg-close" ? "" : " err") + '" data-a="' + map[3] + '">' + map[2] + "</button>" +
+    (map[4] ? '<button class="btn quiet" data-a="' + map[5] + '">' + map[4] + "</button>" : "") + "</div></div></div>";
+}
+
+/* ---------- кнопка «Назад» в Telegram ---------- */
+function onBack() {
+  if (session || test && !test.done) { dialog = { kind: "quit" }; renderOverlay(); }
+  else if (result) { result = null; render(); }
+  else if (view === "passport") { view = "map"; render(); }
+}
+function syncBack() { if (!TG || !tgv("6.1") || !TG.BackButton) return; try { if (session || result || (test && !test.done) || view === "passport") TG.BackButton.show(); else TG.BackButton.hide(); } catch (e) {} }
+if (TG && tgv("6.1") && TG.BackButton) { try { TG.BackButton.onClick(onBack); } catch (e) {} }
+
+/* ---------- нажатия ---------- */
+document.addEventListener("click", function (e) {
+  var el = e.target.closest("[data-a]");
+  if (!el || el.disabled) return;
+  if (el.classList.contains("scrim") && e.target !== el) return;
+  var a = el.getAttribute("data-a"), v = el.getAttribute("data-v"), s = session;
+  switch (a) {
+    case "ob-next": obStep = Math.min(2, obStep + 1); haptic(); render(); break;
+    case "ob-goal": state.goal = +v; render(); break;
+    case "test-start": startTest(); break;
+    case "test-skip": state.onboarded = true; state.placed = state.placed || null; save(); view = "map"; render(); break;
+    case "t-yes": {
+      var item = C.placement[test.i];
+      var pool = shuffle(C.placement.filter(function (x) { return x[0] !== item[0]; })).slice(0, 3).map(function (x) { return x[1]; });
+      test.options = shuffle([item[1]].concat(pool)); test.phase = "check"; render(); break;
+    }
+    case "t-no": testNext(); break;
+    case "t-pick": {
+      var it = C.placement[test.i]; test.picked = +v;
+      var ok = test.options[+v] === it[1];
+      if (ok) test.knownEn.push(it[0]);
+      haptic(ok ? "ok" : "bad"); render();
+      (function (myTest) { setTimeout(function () { if (test === myTest) testNext(); }, 650); })(test);
+      break;
+    }
+    case "test-done": test = null; view = "map"; render(); window.scrollTo(0, 0); break;
+    case "retest": startTest(); break;
+    case "tab": view = v; haptic(); render(); window.scrollTo(0, 0); break;
+    case "sit": startSit(v); break;
+    case "customs": startCustoms(); break;
+    case "customs-go": s.phase = "quiz"; render(); autoSpeak(); break;
+    case "review": startReview(); window.scrollTo(0, 0); break;
+    case "next-phase": goNextPhase(); break;
+    case "flip": s.flipped = !s.flipped; haptic(); app.querySelector(".card3d").classList.toggle("is-flipped", s.flipped); break;
+    case "speak": speak(v); haptic(); break;
+    case "learn-next":
+      if (s.idx + 1 < s.learn.length) { s.idx++; s.flipped = false; render(); speak(s.learn[s.idx].en); } else goNextPhase();
+      break;
+    case "d-pick": {
+      var cur = s.sit.dialog[s.dstep], choice = s.dopts[+v];
+      if (choice === cur.options[0]) {
+        s.dlog[s.dstep] = choice; s.dstep++; s.dopts = null; s.dwrong = false; s.dwrongIdx = null;
+        haptic("ok"); speak(choice); render();
+        var nextStep = s.dstep;
+        if (nextStep < s.sit.dialog.length) setTimeout(function () {
+          // озвучиваем следующую реплику, только если пользователь ещё на ней
+          if (session === s && s.phase === "dialog" && s.dstep === nextStep) speak(s.sit.dialog[nextStep].say);
+        }, 1400);
+      } else { s.dwrong = true; s.dwrongIdx = +v; haptic("bad"); render(); }
+      break;
+    }
+    case "opt": {
+      var q = s.items[s.i], right = q.type === "choose_ru" ? q.w.ru : q.w.en;
+      answer(q.options[+v] === right, +v); break;
+    }
+    case "tile": case "o-tile": {
+      var q2 = s.items[s.i];
+      if (q2.picked.indexOf(+v) >= 0) break;
+      q2.picked.push(+v); haptic(); render();
+      var need = q2.type === "order" ? q2.tokens.length : q2.w.en.length;
+      if (q2.picked.length === need) setTimeout(function () {
+        if (!session || session.items[session.i] !== q2 || q2.picked.length !== need) return;
+        var built = q2.type === "order" ? q2.picked.map(function (i) { return q2.tokens[i]; }).join(" ") : q2.picked.map(function (i) { return q2.tiles[i]; }).join("");
+        var target = q2.type === "order" ? q2.p.en : q2.w.en;
+        var good = built.toLowerCase() === target.toLowerCase();
+        answer(good, good);
+      }, 200);
+      break;
+    }
+    case "slot": case "o-slot": { var q3 = s.items[s.i]; q3.picked.splice(+v, 1); haptic(); render(); break; }
+    case "continue": nextItem(); break;
+    case "quit": dialog = { kind: "quit" }; renderOverlay(); break;
+    case "quit-yes": session = null; if (test && !test.done) { test = null; if (!state.onboarded) { obStep = 2; view = "ob"; } } dialog = null; render(); break;
+    case "done": { var cf = document.getElementById("confetti"); if (cf) cf.remove(); result = null; view = "map"; render(); window.scrollTo(0, 0); break; }
+    case "set-goal": state.goal = +v; save(); render(); break;
+    case "reset": dialog = { kind: "reset" }; renderOverlay(); break;
+    case "reset-yes": state = fresh(); save(); dialog = null; obStep = 0; view = "ob"; render(); break;
+    case "dlg-close": dialog = null; renderOverlay(); break;
+  }
+});
+document.addEventListener("keydown", function (e) {
+  if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("card3d")) { e.preventDefault(); e.target.click(); }
+  if (e.key === "Escape" && dialog && dialog.kind !== "fb") { dialog = null; renderOverlay(); }
+});
+
+render();
+connectRemote();
+var splash = document.getElementById("splash");
+function hideSplash() { if (!splash.classList.contains("out")) { splash.classList.add("out"); setTimeout(function () { splash.remove(); }, 450); } }
+splash.addEventListener("click", hideSplash);
+setTimeout(hideSplash, REDUCED ? 0 : 2300);
+
+window.__krug = { get state() { return state; }, get session() { return session; }, get test() { return test; }, dayNum: dayNum, WORDS: WORDS };
 })();
 </script>
 </body>
